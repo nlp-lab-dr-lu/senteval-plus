@@ -1,0 +1,770 @@
+[
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 87.44,
+        "IScore": 3.018303658921695e-07,
+        "accuracy_list": [
+            88.45,
+            88.78,
+            85.15,
+            87.09,
+            87.75
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 73.37,
+        "IScore": 0.9826320852737266,
+        "accuracy_list": [
+            67.66,
+            73.27,
+            75.58,
+            71.85,
+            78.48
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 74.16,
+        "IScore": 0.9826320852737266,
+        "accuracy_list": [
+            68.65,
+            77.89,
+            75.91,
+            71.19,
+            77.15
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 75.41,
+        "IScore": 0.9986605107665973,
+        "accuracy_list": [
+            72.94,
+            76.9,
+            77.89,
+            72.85,
+            76.49
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 77.0,
+        "IScore": 0.9986605107665973,
+        "accuracy_list": [
+            76.57,
+            77.23,
+            77.89,
+            75.17,
+            78.15
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "bert-base-uncased",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 77.33,
+        "IScore": 0.9826320852737271,
+        "accuracy_list": [
+            72.61,
+            77.89,
+            77.89,
+            77.15,
+            81.13
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 89.1,
+        "IScore": 9.402001036304146e-09,
+        "accuracy_list": [
+            87.13,
+            89.44,
+            87.79,
+            89.4,
+            91.72
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 85.99,
+        "IScore": 0.6285026524938835,
+        "accuracy_list": [
+            86.14,
+            87.46,
+            86.14,
+            84.11,
+            86.09
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 85.39,
+        "IScore": 0.6285026524938835,
+        "accuracy_list": [
+            85.48,
+            87.13,
+            85.15,
+            82.12,
+            87.09
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 84.34,
+        "IScore": 0.9999576270695028,
+        "accuracy_list": [
+            80.53,
+            85.81,
+            84.49,
+            83.44,
+            87.42
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 85.2,
+        "IScore": 0.9999576270695028,
+        "accuracy_list": [
+            82.84,
+            86.14,
+            85.15,
+            84.77,
+            87.09
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "sbert",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 86.25,
+        "IScore": 0.6285026524938844,
+        "accuracy_list": [
+            85.48,
+            87.13,
+            86.8,
+            83.44,
+            88.41
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 67.82,
+        "IScore": 0.014718882995935439,
+        "accuracy_list": [
+            67.99,
+            65.68,
+            65.02,
+            74.5,
+            65.89
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 74.95,
+        "IScore": 0.5672325421102996,
+        "accuracy_list": [
+            73.93,
+            73.93,
+            77.23,
+            73.84,
+            75.83
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 75.94,
+        "IScore": 0.5672325421102994,
+        "accuracy_list": [
+            74.92,
+            75.25,
+            76.24,
+            74.83,
+            78.48
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 70.52,
+        "IScore": 0.975946892335323,
+        "accuracy_list": [
+            73.27,
+            69.97,
+            68.98,
+            67.88,
+            72.52
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 69.99,
+        "IScore": 0.975946892335323,
+        "accuracy_list": [
+            71.95,
+            68.65,
+            70.63,
+            65.23,
+            73.51
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "simcse",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 74.69,
+        "IScore": 0.5672325421103005,
+        "accuracy_list": [
+            74.26,
+            72.28,
+            76.24,
+            74.17,
+            76.49
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 86.85,
+        "IScore": 1.2611011957292082e-07,
+        "accuracy_list": [
+            87.79,
+            82.51,
+            86.8,
+            85.76,
+            91.39
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 78.19,
+        "IScore": 0.8653767818786178,
+        "accuracy_list": [
+            79.21,
+            76.9,
+            75.58,
+            76.82,
+            82.45
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 79.38,
+        "IScore": 0.8653767818786181,
+        "accuracy_list": [
+            81.52,
+            74.92,
+            79.87,
+            78.15,
+            82.45
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 76.61,
+        "IScore": 0.9983576969169823,
+        "accuracy_list": [
+            79.54,
+            74.26,
+            73.6,
+            76.49,
+            79.14
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 80.04,
+        "IScore": 0.9983576969169823,
+        "accuracy_list": [
+            82.51,
+            79.21,
+            76.9,
+            82.12,
+            79.47
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleBert",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 82.88,
+        "IScore": 0.8653767818786211,
+        "accuracy_list": [
+            83.83,
+            81.52,
+            80.86,
+            83.77,
+            84.44
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 90.02,
+        "IScore": 2.596222440771472e-09,
+        "accuracy_list": [
+            90.43,
+            92.74,
+            85.15,
+            90.4,
+            91.39
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 83.87,
+        "IScore": 0.33673755914528253,
+        "accuracy_list": [
+            85.15,
+            83.17,
+            84.16,
+            82.12,
+            84.77
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 83.94,
+        "IScore": 0.3367375591452828,
+        "accuracy_list": [
+            85.15,
+            80.86,
+            83.5,
+            86.42,
+            83.77
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 33.44,
+        "IScore": 0.9690753864191514,
+        "accuracy_list": [
+            34.98,
+            32.67,
+            30.36,
+            33.77,
+            35.43
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 55.92,
+        "IScore": 0.9690753864191514,
+        "accuracy_list": [
+            58.75,
+            50.83,
+            57.76,
+            56.95,
+            55.3
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "GPT",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 84.27,
+        "IScore": 0.3367375591452824,
+        "accuracy_list": [
+            84.49,
+            85.15,
+            83.83,
+            84.44,
+            83.44
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 85.06,
+        "IScore": 5.586666470181185e-07,
+        "accuracy_list": [
+            86.8,
+            85.15,
+            84.82,
+            79.8,
+            88.74
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 24.85,
+        "IScore": 0.3682585843713077,
+        "accuracy_list": [
+            25.08,
+            24.09,
+            20.46,
+            29.47,
+            25.17
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 17.91,
+        "IScore": 0.3682585843713076,
+        "accuracy_list": [
+            17.49,
+            16.5,
+            17.16,
+            19.54,
+            18.87
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 29.94,
+        "IScore": 0.3688945682104843,
+        "accuracy_list": [
+            28.38,
+            25.74,
+            31.35,
+            32.45,
+            31.79
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 48.25,
+        "IScore": 0.3688945682104843,
+        "accuracy_list": [
+            50.83,
+            49.83,
+            44.22,
+            45.36,
+            50.99
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "angleLlama",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 53.07,
+        "IScore": 0.3682585843713088,
+        "accuracy_list": [
+            52.15,
+            56.11,
+            57.1,
+            58.94,
+            41.06
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 87.84,
+        "IScore": 8.576569504197146e-07,
+        "accuracy_list": [
+            89.11,
+            87.79,
+            86.14,
+            85.1,
+            91.06
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 24.92,
+        "IScore": 0.36433708425932937,
+        "accuracy_list": [
+            25.08,
+            25.74,
+            24.09,
+            24.5,
+            25.17
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 19.69,
+        "IScore": 0.36433708425932937,
+        "accuracy_list": [
+            19.47,
+            18.48,
+            19.8,
+            21.85,
+            18.87
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 31.0,
+        "IScore": 0.3687674359188917,
+        "accuracy_list": [
+            29.37,
+            25.41,
+            33.66,
+            34.77,
+            31.79
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 51.42,
+        "IScore": 0.368767435918892,
+        "accuracy_list": [
+            46.2,
+            52.48,
+            56.44,
+            51.32,
+            50.66
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama-7B",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 58.1,
+        "IScore": 0.3643370842593216,
+        "accuracy_list": [
+            60.07,
+            60.07,
+            58.09,
+            51.32,
+            60.93
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 86.85,
+        "IScore": 8.95259355988992e-07,
+        "accuracy_list": [
+            86.47,
+            88.45,
+            87.13,
+            83.11,
+            89.07
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 22.87,
+        "IScore": 0.3643507939802324,
+        "accuracy_list": [
+            24.75,
+            22.11,
+            21.78,
+            25.83,
+            19.87
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 17.71,
+        "IScore": 0.3643507939802324,
+        "accuracy_list": [
+            19.14,
+            16.17,
+            19.14,
+            20.2,
+            13.91
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 30.27,
+        "IScore": 0.3687447658996566,
+        "accuracy_list": [
+            31.35,
+            27.06,
+            28.38,
+            33.44,
+            31.13
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 50.69,
+        "IScore": 0.3687447658996565,
+        "accuracy_list": [
+            46.53,
+            56.11,
+            47.52,
+            50.33,
+            52.98
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "bace_classification",
+        "encoder": "llama2-7B",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 60.55,
+        "IScore": 0.3643507939802252,
+        "accuracy_list": [
+            61.39,
+            53.8,
+            59.08,
+            59.27,
+            69.21
+        ],
+        "kfold": 5
+    }
+]

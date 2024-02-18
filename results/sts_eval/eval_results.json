@@ -1,0 +1,290 @@
+[
+    {
+        "encoder": "bert",
+        "whitening": "",
+        "pearson_value": 46.90475960174092,
+        "spearman_value": 46.359219297640266
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca",
+        "pearson_value": 61.01608630996933,
+        "spearman_value": 63.19831311565274
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca-cor",
+        "pearson_value": 60.98398443720039,
+        "spearman_value": 63.17471668472645
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca",
+        "pearson_value": 61.01608630996933,
+        "spearman_value": 63.19831311565274
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca-cor",
+        "pearson_value": 60.98398443720039,
+        "spearman_value": 63.17471668472645
+    },
+    {
+        "encoder": "bert",
+        "whitening": "cholesky",
+        "pearson_value": 61.01608630996933,
+        "spearman_value": 63.19831311565274
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "",
+        "pearson_value": 84.0399612575432,
+        "spearman_value": 83.4219042133061
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca",
+        "pearson_value": 75.63986421592999,
+        "spearman_value": 76.75271566866117
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca-cor",
+        "pearson_value": 74.8077398075291,
+        "spearman_value": 76.27725637039009
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca",
+        "pearson_value": 75.63986421592999,
+        "spearman_value": 76.75271566866117
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca-cor",
+        "pearson_value": 74.8077398075291,
+        "spearman_value": 76.27725637039009
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "cholesky",
+        "pearson_value": 75.63986421592999,
+        "spearman_value": 76.75271566866117
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "",
+        "pearson_value": 83.27629961312432,
+        "spearman_value": 84.24697800345706
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca",
+        "pearson_value": 78.97130796214611,
+        "spearman_value": 80.26960439041868
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca-cor",
+        "pearson_value": 78.62498305281078,
+        "spearman_value": 80.1219125725013
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca",
+        "pearson_value": 78.97130796214611,
+        "spearman_value": 80.26960439041868
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca-cor",
+        "pearson_value": 78.62498305281078,
+        "spearman_value": 80.1219125725013
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "cholesky",
+        "pearson_value": 78.97130796214611,
+        "spearman_value": 80.26960439041868
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "",
+        "pearson_value": 83.94822435699679,
+        "spearman_value": 85.71019472622419
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca",
+        "pearson_value": 78.74223496912889,
+        "spearman_value": 80.32484613919821
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca-cor",
+        "pearson_value": 78.74027227701305,
+        "spearman_value": 80.32359815741326
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca",
+        "pearson_value": 78.74223496912889,
+        "spearman_value": 80.32484613919821
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca-cor",
+        "pearson_value": 78.74027227701305,
+        "spearman_value": 80.32359815741326
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "cholesky",
+        "pearson_value": 78.74223496912889,
+        "spearman_value": 80.32484613919821
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "",
+        "pearson_value": 87.21379873280057,
+        "spearman_value": 88.8993129896979
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca",
+        "pearson_value": 32.81719983425908,
+        "spearman_value": 65.59785039252259
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca-cor",
+        "pearson_value": 32.82473998286434,
+        "spearman_value": 66.35317372935774
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca",
+        "pearson_value": 32.817199834226045,
+        "spearman_value": 65.59785039252259
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca-cor",
+        "pearson_value": 32.82473998286434,
+        "spearman_value": 66.35317372935774
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "cholesky",
+        "pearson_value": 32.81719984678297,
+        "spearman_value": 65.59785039252259
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "",
+        "pearson_value": 41.215672293408495,
+        "spearman_value": 41.750129354220824
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca",
+        "pearson_value": 21.61146549414495,
+        "spearman_value": 53.491168788451425
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 21.11190769183346,
+        "spearman_value": 47.90796171483971
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca",
+        "pearson_value": 21.61146549414495,
+        "spearman_value": 53.491168788451425
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 21.11190769183346,
+        "spearman_value": 47.90796171483971
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "cholesky",
+        "pearson_value": 21.611465499542973,
+        "spearman_value": 53.491168788451425
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "",
+        "pearson_value": 41.704424236583385,
+        "spearman_value": 42.65379369773592
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca",
+        "pearson_value": 26.43612102003514,
+        "spearman_value": 52.56244882825928
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 24.03931102344584,
+        "spearman_value": 47.99983292017973
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca",
+        "pearson_value": 26.43612102003514,
+        "spearman_value": 52.56244882825928
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 24.03931102344584,
+        "spearman_value": 47.99983292017973
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "cholesky",
+        "pearson_value": 26.436121017894614,
+        "spearman_value": 52.56244882825928
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "",
+        "pearson_value": 67.9625812408726,
+        "spearman_value": 82.77972068768246
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "zca",
+        "pearson_value": 71.99472702239024,
+        "spearman_value": 73.79204587701201
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "zca-cor",
+        "pearson_value": 65.34837452963667,
+        "spearman_value": 70.43653691435732
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "pca",
+        "pearson_value": 71.99472702239024,
+        "spearman_value": 73.79204587701201
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "pca-cor",
+        "pearson_value": 65.34837452963667,
+        "spearman_value": 70.43653691435732
+    },
+    {
+        "encoder": "ChatGPT",
+        "whitening": "cholesky",
+        "pearson_value": 71.99472702239024,
+        "spearman_value": 73.79204587701201
+    }
+]
