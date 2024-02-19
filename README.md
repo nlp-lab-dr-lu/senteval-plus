@@ -14,7 +14,7 @@ git clone https://github.com/FlockOfBird/emb-eval.git
 </p>
 
 <h2 id='eg'>Embedding Generation</h2>
-The entry point to generate embeddings is main.py file. You can loop over encoders and datasets to generate embeddings here. Before you add
+The entry point to generate embeddings is main.py file. You can loop over encoders and datasets to generate embeddings here. You can chose between our provided data in data folder or add any dataset you want to evaluate. Make sure to follow our datasets format for next steps.
 <h2 id='ee'>Evaluate Embeddings</h2>
 
 <h2 id='ru'>Repeat Us</h2>
