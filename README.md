@@ -5,6 +5,17 @@ First clone the project:
 ```bash
 git clone https://github.com/FlockOfBird/emb-eval.git
 ```
+Then create a virtual environment to install dependencies and activate it:
+```bash
+cd senteval-plus
+virtualenv env
+source env/bin/activate
+```
+Then install requirments:
+```bash
+pip install -r requirements.txt
+```
+
 <h2>Where To Start</h2>
 <p>You can download the embeddings of x,y,z,... datasets from this table. If you need to add new dataset to evaluate:
   <ol>

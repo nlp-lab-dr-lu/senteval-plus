@@ -44,9 +44,9 @@ models_chatGPT = ["text-embedding-3-small"]
 '''
 options for datasets:
     built-in train/test split:
-        "yelpp", "imdb", "agnews", "yelpf", "trec", "sstf", "mrpc1", "mrpc2"
+       "trec", "mrpc1", "mrpc2"
 '''
-splitted_datasets = ["yelpp", "imdb", "agnews", "yelpf", "trec", "sstf", "mrpc"]
+splitted_datasets = ["trec", "mrpc"]
 '''
     no built-in train/test split:
         "mr", "cr", "subj", "mpqa"
@@ -58,7 +58,7 @@ unsplitted_datasets = ["mr", "cr", "subj", "mpqa"]
 '''
 similarity_datasets = ["sts1", "sts2"]
 
-datasets = [] 
+datasets = ["mr", "cr", "subj", "mpqa", ... ] 
 
 models = models_sbert + models_bert + models_simcse + models_angle + models_llama + models_chatGPT
 

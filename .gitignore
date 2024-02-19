@@ -1,0 +1,15 @@
+results/
+env/
+
+7B_converted/
+13B_converted/
+30B_converted/
+65B_converted/
+offload/
+
+data/
+finetuned_bert/
+
+*.bin
+*.csv
+
