@@ -9,7 +9,6 @@ from data import *
 from sentence_transformers import SentenceTransformer
 
 
-
 class SBert_Embeddings:
     def __init__(self, model_name, datasets):
 
@@ -22,7 +21,7 @@ class SBert_Embeddings:
         for dataset in self.datasets:
             print('>>>>>>>>', self.model_name, dataset, '<<<<<<<<')
             self.dataset_name = dataset
-            dataset = get_dataset(dataset)
+            dataset = get_small_dataset(dataset,10)
             self.train_data, self.test_data = dataset["train"], dataset["test"]
             if(self.dataset_name in emb_util.unsplitted_datasets or self.dataset_name in emb_util.similarity_datasets):
                 embeddings = self.get_embeddings(self.train_data, self.dataset_name, True)

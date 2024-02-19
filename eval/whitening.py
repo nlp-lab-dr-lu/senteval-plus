@@ -2,7 +2,6 @@ import numpy as np
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.utils.validation import check_is_fitted
 from sklearn.utils import check_array, as_float_array
-import matplotlib.pyplot as plt
 
 class Whitens(BaseEstimator, TransformerMixin):
     def __init__(self, regularization=np.finfo(np.float64).eps, copy=False):

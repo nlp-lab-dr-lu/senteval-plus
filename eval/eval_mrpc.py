@@ -2,8 +2,6 @@ import json
 import numpy as np
 import pandas as pd
 
-import emb_util
-
 # from whitening import whiten
 from whitening import Whitens
 from validation import InnerKFoldClassifier

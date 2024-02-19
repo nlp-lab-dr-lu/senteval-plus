@@ -1,9 +1,9 @@
-from llama_base import Llama_Embeddings
-from bert_base import Bert_Embeddings
-from sbert_base import SBert_Embeddings
-from angle_base import Angle_Embeddings
-from chatGPT import ChatGPT_Embeddings
-from simcse_base import SimCSE_Embeddings
+from encoders.llama_base import Llama_Embeddings
+from encoders.bert_base import Bert_Embeddings
+from encoders.sbert_base import SBert_Embeddings
+from encoders.angle_base import Angle_Embeddings
+from encoders.chatGPT import ChatGPT_Embeddings
+from encoders.simcse_base import SimCSE_Embeddings
 from data import *
 
 '''
@@ -33,7 +33,7 @@ options for models_angle:
     angle-bert    : fine tuned bert on nli dataset
     angle-llama   : fine tuned llama2 with lora technique on nli dataset
 '''
-models_angle = [ "angle-llama"]#"angle-bert",
+models_angle = ["angle-bert", "angle-llama"]
 '''
 options for models_chatGPT:
     text-embedding-3-small  : 62.3% in MTEB, 62,500 pages per dollor
@@ -58,9 +58,9 @@ unsplitted_datasets = ["mr", "cr", "subj", "mpqa"]
 '''
 similarity_datasets = ["sts1", "sts2"]
 
-datasets = ["sst2"] 
+datasets = [] 
 
-models = models_llama #models_sbert + models_bert + models_simcse + models_angle + models_llama + models_chatGPT
+models = models_sbert + models_bert + models_simcse + models_angle + models_llama + models_chatGPT
 
 for model in models:
     if(model in models_sbert):
@@ -75,11 +75,3 @@ for model in models:
         Llama_Embeddings(model, datasets)
     elif(model in models_chatGPT):
         ChatGPT_Embeddings(model, datasets)
-
-'''
-options for bio datasets:
-    "hiv", "bace", "clintox", "bbbp", "structure_links", "drug_discription"
-'''
-bio_datasets = ["hiv"]
-# for model in models_llama:
-#     Llama_Embeddings(model, bio_datasets)
