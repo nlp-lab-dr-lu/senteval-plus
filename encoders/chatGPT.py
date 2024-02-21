@@ -10,7 +10,7 @@ import openai
 
 class ChatGPT_Embeddings:
     def __init__(self, model_name, datasets):
-        openai.api_key  = ('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')
+        openai.api_key  = ('Your OpenAI Key')
         logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
         # The base Bert Model transformer outputting raw hidden-states without any specific head on top.
