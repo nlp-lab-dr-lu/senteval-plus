@@ -3,7 +3,7 @@
 
 First clone the project:
 ```bash
-git clone https://github.com/FlockOfBird/emb-eval.git
+git clone https://github.com/nlp-lab-dr-lu/senteval-plus.git
 ```
 Then create a virtual environment to install dependencies and activate it:
 ```bash
