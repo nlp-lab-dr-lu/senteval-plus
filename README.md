@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1O_tqM3MnFIJl5NxoF9RSk4q_2DT6xLgV?usp=sharing](https://colab.research.google.com/drive/1b9xuja2NFpS6gS5wHAWUSNzVSIDZdcHW?usp=sharing))
+<a href="https://colab.research.google.com/drive/1b9xuja2NFpS6gS5wHAWUSNzVSIDZdcHW?usp=sharing" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 <h1>SentEval+</h1>
 
