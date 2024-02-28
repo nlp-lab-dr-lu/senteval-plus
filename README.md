@@ -1,4 +1,6 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1O_tqM3MnFIJl5NxoF9RSk4q_2DT6xLgV?usp=sharing)
 <h1>SentEval+</h1>
+
 <p>We are introducing SentEval+ , a framework built based on <a href='https://github.com/facebookresearch/SentEval'>SentEval</a> to both generate and evaluate embeddings.</p>
 
 First clone the project:
