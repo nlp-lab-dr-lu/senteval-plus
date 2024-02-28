@@ -20,7 +20,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-class Evlaution:
+class Evalaution:
     def __init__(self):
         self.BASE_PATH = 'embeddings/'
         self.drawcm = True
