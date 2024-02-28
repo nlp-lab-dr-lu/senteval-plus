@@ -9,6 +9,7 @@ assert (sklearn.__version__ >= "0.18.0"), \
     "need to update sklearn to version >= 0.18.0"
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import f1_score, accuracy_score #For the binary case will return F1 score for pos_label
 
 def get_classif_name(classifier_config, usepytorch):
     if not usepytorch:
@@ -34,7 +35,8 @@ class InnerKFoldClassifier(object):
         self.nclasses = config['nclasses']
         self.seed = config['seed']
         self.devresults = []
-        self.testresults = []
+        self.testaccs = []
+        self.testf1s = []
         self.usepytorch = config['usepytorch']
         self.classifier_config = config['classifier']
         self.modelname = get_classif_name(self.classifier_config, self.usepytorch)
@@ -86,21 +88,16 @@ class InnerKFoldClassifier(object):
                 clf = LogisticRegression(C=optreg, random_state=self.seed)
                 clf.fit(X_train, y_train)
 
-            
-            self.testresults.append(round(100 * clf.score(X_test, y_test), 2))
 
-        if(self.drawcm):
+            self.testaccs.append(round(100 * clf.score(X_test, y_test), 2))
             y_pred = clf.predict(X_test)
-            cm_data = {
-                'y_test': y_test,
-                'y_pred': y_pred
-            }
-        else:
-            cm_data = {
-                'y_test': None,
-                'y_pred': None
-            }
+            self.testf1s.append(round(100 * f1_score(y_test, y_pred, average='weighted')))
+
+            y_pred = clf.predict(X_test)
+            cm_data = {'y_test': y_test, 'y_pred': y_pred}
 
         devaccuracy = round(np.mean(self.devresults), 2)
-        testaccuracy = round(np.mean(self.testresults), 2)
-        return devaccuracy, testaccuracy, self.testresults, cm_data
+        testaccuracy = round(np.mean(self.testaccs), 2)
+        testf1 = round(np.mean(self.testf1s), 2)
+
+        return devaccuracy, testaccuracy, testf1, self.testf1s, cm_data
