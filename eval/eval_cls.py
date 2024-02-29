@@ -9,8 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import emb_util
 
 # from whitening import whiten
-from whitening import Whitens
-from validation import InnerKFoldMLPClassifier, InnerKFoldClassifier
+from .validation import InnerKFoldMLPClassifier, InnerKFoldClassifier
 from IsoScore import IsoScore
 
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
