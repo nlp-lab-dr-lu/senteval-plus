@@ -43,7 +43,59 @@ def get_layers_mean(model_name, dataset, embeddings_list):
     print(f'saved average of {embeddings_list[0]} and {embeddings_list[1]} for {dataset}')
     return
 
+def draw_cm(self, cm_data, dataset, whitening_method, encoder, download_font=False):
+    if download_font:
+        # add the font to Matplotlib
+        # create the directory for fonts if it doesn't exist
+        font_dir = "font/"
+        os.makedirs(font_dir, exist_ok=True)
 
+        # Download the font
+        font_url = "http://foroogh.myweb.cs.uwindsor.ca/Times_New_Roman.ttf"
+        font_path = os.path.join(font_dir, "times_new_roman.ttf")
+        if not os.path.exists(font_path):
+            os.system(f"wget -P {font_dir} {font_url}")
 
+    font_files = font_manager.findSystemFonts(fontpaths=['font/'])
+    for font_file in font_files:
+        font_manager.fontManager.addfont(font_file)
 
+    # Verify the font is recognized by Matplotlib
+    font_name = "Times New Roman"
+    if font_name in font_manager.get_font_names():
+        print(f"'{font_name}' font successfully added.")
+        # Set default font to Times New Roman
+        matplotlib.rc('font', family=font_name)
+    else:
+        print(f"'{font_name}' font not found. Please check the font installation.")
 
+    cm = confusion_matrix(cm_data['y_test'], cm_data['y_pred'], labels=np.unique(cm_data['y_test']))
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=np.unique(cm_data['y_test']))
+    fig, ax = plt.subplots(figsize=(4, 4))
+    ax.set_axis_off()
+    ax.set_title(whitening_method.upper())
+    plt.rcParams.update({'font.size': 30})
+    disp.plot(ax=ax, cmap='Blues', colorbar=False, values_format='d')
+    path = f'{self.RESULTS_PATH}/{dataset}_eval/cm/{encoder}-{whitening_method}-cm.pdf'
+    print('svaing cm plot',path)
+    fig.savefig(path, format='pdf')
+
+def check_and_reorder_dataframe(df):
+    # Reorder DataFrame to ensure 'text' is the first column and 'label' is the second
+    column_order = ['text', 'label'] + [col for col in df.columns if col not in ['text', 'label']]
+    df = df[column_order]
+    
+    # Check if 'text' column exists and is of string type
+    if df['text'].dtype != object:
+        raise Exception("'text' column must be of string type")
+    
+    # Check if 'label' column exists and is of integer type
+    if not pd.api.types.is_integer_dtype(df['label']):
+        raise Exception("'label' column must be of integer type")
+    
+    # Check if the rest of the columns are float
+    for col in df.columns[2:]:
+        if not pd.api.types.is_float_dtype(df[col]):
+            raise Exception(f"'{col}' column must be of float type")
+    
+    return df
