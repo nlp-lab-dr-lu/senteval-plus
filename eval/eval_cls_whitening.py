@@ -9,13 +9,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import emb_util
 
 # from whitening import whiten
+from .whitening import Whitens
 from .validation import InnerKFoldMLPClassifier, InnerKFoldClassifier
 from IsoScore import IsoScore
 
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 import matplotlib.pyplot as plt
-
 
 class Evaluation:
     def __init__(self, config):
@@ -67,6 +67,30 @@ class Evaluation:
                     'kfold': self.kfold
                 }
                 self.results.append(result)
+
+                if self.eval_whitening:
+                    whitenings_methods = ['pca', 'zca', 'zca_cor', 'pca_cor', 'cholesky']
+                    for method in whitenings_methods:
+                        trf = Whitens().fit(X, method = method)
+                        X_whitened = trf.transform(X) # X is whitened
+                        acc, acc_list, f1_w = self.sentEval(X_whitened, y, self.kfold, self.classifier, nclasses, dataset, method, encoder)
+                        print(f'\twhitening method: {method} : {acc} : {f1_w}')
+                        IScore = IsoScore.IsoScore(X_whitened)
+
+                        method = 'zca-cor' if method == 'zca_cor' else method # make sure to be consistant in file names
+                        method = 'pca-cor' if method == 'pca_cor' else method # make sure to be consistant in file names
+                        result = {
+                            'dataset': dataset,
+                            'encoder': encoder,
+                            'classfier': self.classifier,
+                            'whitening': method,
+                            'accuracy': acc,
+                            'f1_weighted': f1_w,
+                            'IScore': IScore.item(),
+                            'accuracy_list': acc_list,
+                            'kfold': self.kfold
+                        }
+                        self.results.append(result)
 
                 json_object = json.dumps(self.results, indent=4)
                 with open(f"{self.RESULTS_PATH}/{dataset}_eval/{self.classifier}_eval_results3.json", "w") as outfile:
@@ -149,4 +173,3 @@ class Evaluation:
         nclasses = len(classes)
 
         return X, y, nclasses
-
