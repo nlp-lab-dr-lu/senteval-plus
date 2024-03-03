@@ -81,21 +81,26 @@ def draw_cm(self, cm_data, dataset, whitening_method, encoder, download_font=Fal
     fig.savefig(path, format='pdf')
 
 def check_and_reorder_dataframe(df):
+    # print('col names:',df.columns.tolist())
+    if('SMILES' in df.columns.tolist()):
+        df = df.rename(columns={'SMILES': 'text'}) 
+
     # Reorder DataFrame to ensure 'text' is the first column and 'label' is the second
     column_order = ['text', 'label'] + [col for col in df.columns if col not in ['text', 'label']]
     df = df[column_order]
-    
+    df['label'] = df['label'].astype(int)
+
     # Check if 'text' column exists and is of string type
     if df['text'].dtype != object:
         raise Exception("'text' column must be of string type")
-    
+
     # Check if 'label' column exists and is of integer type
     if not pd.api.types.is_integer_dtype(df['label']):
         raise Exception("'label' column must be of integer type")
-    
+
     # Check if the rest of the columns are float
     for col in df.columns[2:]:
         if not pd.api.types.is_float_dtype(df[col]):
             raise Exception(f"'{col}' column must be of float type")
-    
+
     return df
