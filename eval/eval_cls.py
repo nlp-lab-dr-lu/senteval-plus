@@ -3,6 +3,8 @@ import sys
 import json
 import numpy as np
 import pandas as pd
+import questionary
+
 import random
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,7 +34,7 @@ class Evaluation:
         self.EMBEDDINGS_PATH = 'embeddings/' if 'EMBEDDINGS_PATH' not in config else config['EMBEDDINGS_PATH']
         self.RESULTS_PATH = 'results/' if 'RESULTS_PATH' not in config else config['RESULTS_PATH']
         self.drawcm = False if 'drawcm' not in config else config['drawcm']
-        self.classifier = 'mlp' if 'classifier' not in config else config['classifier']
+        self.classifier = self.get_classifier_name()
         self.eval_whitening = True
         self.kfold = 5
         list_of_encoders = ["bert", "all-mpnet-base-v2", "simcse", "angle-bert", "angle-llama", "llama-7B", "llama2-7B", "text-embedding-3-small"]
@@ -44,11 +46,11 @@ class Evaluation:
             self.datasets = config['datasets']
 
         self.results = []
-
+        
     def run(self):
         for dataset in self.datasets:
             for encoder in self.encoders:
-                print(f"<<evaluating {dataset} with {encoder} with {self.classifier}>>")
+                print(f"\n<<evaluating {dataset.capitalize()} with {encoder.capitalize()} using {self.classifier.upper()} classifier>>")
                 X, y, nclasses = self.load_data(dataset, encoder)
 
                 IScore = IsoScore.IsoScore(X)
@@ -150,3 +152,21 @@ class Evaluation:
 
         return X, y, nclasses
 
+    def get_classifier_name(selfs):
+        classifier = questionary.select(
+        "Which classifier do you want to use?",
+        choices=[
+            "Multi Layer Perceptron (MLP)",
+            "Logistic Regression",
+            "Support Vector Machine (SVM)",
+            "Random Forest",
+            "Naive Bayes"
+        ]).ask()
+        mapper = {
+            "Multi Layer Perceptron (MLP)": "mlp",
+            "Logistic Regression": "lr",
+            "Support Vector Machine (SVM)": "svm",
+            "Random Forest": "rf",
+            "Naive Bayes": "nb"
+        }
+        return mapper[classifier]

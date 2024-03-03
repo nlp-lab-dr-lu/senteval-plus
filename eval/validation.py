@@ -3,6 +3,7 @@ from __future__ import absolute_import, division, unicode_literals
 import logging
 import numpy as np
 from .classifier import MLP
+from .hyperparameter import HyperParameters
 
 import sklearn
 assert (sklearn.__version__ >= "0.18.0"), \
@@ -49,9 +50,9 @@ class InnerKFoldMLPClassifier(object):
 
         regs = [10 ** t for t in range(-5, -1)] if self.usepytorch else \
             [2 ** t for t in range(-2, 4, 1)]
-        skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=1111)
+        skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
         innerskf = StratifiedKFold(n_splits=self.k, shuffle=True,
-                                   random_state=1111)
+                                   random_state=self.seed)
         count = 0
         for train_idx, test_idx in skf.split(self.X, self.y):
             count += 1
@@ -63,22 +64,22 @@ class InnerKFoldMLPClassifier(object):
                 for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
                     X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
                     y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
-                    clf = MLP(self.classifier_config, 
+                    clf = MLP(self.classifier_config,
                               inputdim=self.featdim,
-                              nclasses=self.nclasses, 
+                              nclasses=self.nclasses,
                               l2reg=reg,
                               seed=self.seed)
                     clf.fit(X_in_train, y_in_train,validation_data=(X_in_test, y_in_test))
-                 
+
                     regscores.append(clf.score(X_in_test, y_in_test))
                 scores.append(round(100 * np.mean(regscores), 2))
             optreg = regs[np.argmax(scores)]
             logging.info('Best param found at split {0}: l2reg = {1} with score {2}'.format(count, optreg, np.max(scores)))
             self.devresults.append(np.max(scores))
 
-            clf = MLP(self.classifier_config, 
+            clf = MLP(self.classifier_config,
                       inputdim=self.featdim,
-                      nclasses=self.nclasses, 
+                      nclasses=self.nclasses,
                       l2reg=optreg,
                       seed=self.seed)
             clf.fit(X_train, y_train, validation_split=0.05)
@@ -92,7 +93,7 @@ class InnerKFoldMLPClassifier(object):
         testf1 = round(np.mean(self.testf1s), 2)
 
         return devaccuracy, testaccuracy, testf1, self.testf1s, cm_data
-    
+
 class InnerKFoldClassifier(object):
 
     def __init__(self, X, y, config):
@@ -104,16 +105,14 @@ class InnerKFoldClassifier(object):
         self.devresults = []
         self.testaccs = []
         self.testf1s = []
-        self.usepytorch = config['usepytorch']
-        self.classifier_config = config['classifier']
-        self.modelname = get_classif_name(self.classifier_config, self.usepytorch)
+        self.modelname = config['classifier']
         self.k = 5 if 'kfold' not in config else config['kfold']
 
     def run(self):
         logging.info('Training {0} with (inner) {1}-fold cross-validation'.format(self.modelname, self.k))
 
-        skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=1111)
-        innerskf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=1111)
+        skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
+        innerskf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
         count = 0
         for train_idx, test_idx in skf.split(self.X, self.y):
             count += 1
@@ -122,6 +121,8 @@ class InnerKFoldClassifier(object):
             scores = []
 
             if self.modelname == 'lr':
+                # hp = HyperParameters('lr')
+                # conf = hp.get_hyperparameters()
                 # logistic regression will have hypertuning
                 regs = [2 ** t for t in range(-2, 4, 1)]
                 scores = []
@@ -130,31 +131,49 @@ class InnerKFoldClassifier(object):
                     for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
                         X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
                         y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
-                        clf = LogisticRegression(C=reg, random_state=self.seed)
+                        clf = LogisticRegression(C=reg, random_state=1111, max_iter=1000000)
                         clf.fit(X_in_train, y_in_train)
                         regscores.append(clf.score(X_in_test, y_in_test))
                     scores.append(round(100 * np.mean(regscores), 2))
                 optreg = regs[np.argmax(scores)]
                 logging.info('Best param found at split {0}: l2reg = {1} with score {2}'.format(count, optreg, np.max(scores)))
                 self.devresults.append(np.max(scores))
-                clf = LogisticRegression(C=optreg, random_state=self.seed)
+                clf = LogisticRegression(C=optreg, random_state=self.seed, max_iter=1000000)
             elif self.modelname == 'svm':
-                clf = make_pipeline(StandardScaler(), SVC(gamma='auto'), random_state=self.seed)
+                # scaler = StandardScaler()
+                # X_train = scaler.fit_transform(X_train)
+                # X_test = scaler.transform(X_test)
+                # clf = SVC(kernel='linear', C=1, cache_size=5000, random_state=self.seed)
+                clf = make_pipeline(StandardScaler(), SVC(kernel='linear', C=1, class_weight='balanced'))
             elif self.modelname == 'rf':
-                clf = RandomForestClassifier(max_depth=5, random_state=self.seed)
+                deps = [3, 5, 7, 10]
+                scores = []
+                for dep in deps:
+                    depscores = []
+                    for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
+                        X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
+                        y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
+                        clf = RandomForestClassifier(max_depth=dep, random_state=1111)
+                        clf.fit(X_in_train, y_in_train)
+                        depscores.append(clf.score(X_in_test, y_in_test))
+                    scores.append(round(100 * np.mean(depscores), 2))
+                optdep = deps[np.argmax(scores)]
+                logging.info('Best depth found at split {0}: depth = {1} with score {2}'.format(count, optdep, np.max(scores)))
+                self.devresults.append(np.max(scores))
+                clf = RandomForestClassifier(max_depth=optdep, random_state=self.seed)
             elif self.modelname == 'nb':
-                clf = GaussianNB(random_state=self.seed)
+                clf = GaussianNB()
             else:
                 raise Exception("unknown classifier")
 
             clf.fit(X_train, y_train)
-
             self.testaccs.append(round(100 * clf.score(X_test, y_test), 2))
             y_pred = clf.predict(X_test)
             self.testf1s.append(round(100 * f1_score(y_test, y_pred, average='weighted')))
             cm_data = {'y_test': y_test, 'y_pred': y_pred}
 
-        devaccuracy = round(np.mean(self.devresults), 2)
+        # devaccuracy = round(np.mean(self.devresults), 2)
+        devaccuracy = None
         testaccuracy = round(np.mean(self.testaccs), 2)
         testf1 = round(np.mean(self.testf1s), 2)
 
