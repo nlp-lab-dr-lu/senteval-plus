@@ -120,9 +120,6 @@ class InnerKFoldClassifier(object):
             scores = []
 
             if self.modelname == 'lr':
-                # hp = HyperParameters('lr')
-                # conf = hp.get_hyperparameters()
-                # logistic regression will have hypertuning
                 regs = [2 ** t for t in range(-2, 4, 1)]
                 scores = []
                 for reg in regs:
