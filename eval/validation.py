@@ -45,8 +45,6 @@ class InnerKFoldMLPClassifier(object):
         self.k = 5 if 'kfold' not in config else config['kfold']
 
     def run(self):
-        logging.info('Training {0} with (inner) {1}-fold cross-validation'.format(self.modelname, self.k))
-
         regs = [10 ** t for t in range(-5, -1)] if self.usepytorch else \
             [2 ** t for t in range(-2, 4, 1)]
         skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
@@ -108,8 +106,6 @@ class InnerKFoldClassifier(object):
         self.k = 5 if 'kfold' not in config else config['kfold']
 
     def run(self):
-        logging.info('Training {0} with (inner) {1}-fold cross-validation'.format(self.modelname, self.k))
-
         skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
         innerskf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=self.seed)
         count = 0
@@ -122,24 +118,18 @@ class InnerKFoldClassifier(object):
             if self.modelname == 'lr':
                 regs = [2 ** t for t in range(-2, 4, 1)]
                 scores = []
-                for reg in regs:
-                    regscores = []
-                    for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
-                        X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
-                        y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
-                        clf = LogisticRegression(C=reg, random_state=1111, max_iter=1000000)
-                        clf.fit(X_in_train, y_in_train)
-                        regscores.append(clf.score(X_in_test, y_in_test))
-                    scores.append(round(100 * np.mean(regscores), 2))
-                optreg = regs[np.argmax(scores)]
-                logging.info('Best param found at split {0}: l2reg = {1} with score {2}'.format(count, optreg, np.max(scores)))
-                self.devresults.append(np.max(scores))
-                clf = LogisticRegression(C=optreg, random_state=self.seed, max_iter=1000000)
+                # for reg in regs:
+                #     regscores = []
+                #     for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
+                #         X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
+                #         y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
+                #         clf = LogisticRegression(C=reg, random_state=self.seed, max_iter=5000)
+                #         clf.fit(X_in_train, y_in_train)
+                #         regscores.append(clf.score(X_in_test, y_in_test))
+                #     scores.append(round(100 * np.mean(regscores), 2))
+                optreg = regs[np.argmax(scores)] if len(scores) > 0 else 1.0
+                clf = LogisticRegression(C=optreg, random_state=self.seed, max_iter=5000)
             elif self.modelname == 'svm':
-                # scaler = StandardScaler()
-                # X_train = scaler.fit_transform(X_train)
-                # X_test = scaler.transform(X_test)
-                # clf = SVC(kernel='linear', C=1, cache_size=5000, random_state=self.seed)
                 clf = make_pipeline(StandardScaler(), SVC(kernel='linear', C=1, class_weight='balanced'))
             elif self.modelname == 'rf':
                 deps = [3, 5, 7, 10]
