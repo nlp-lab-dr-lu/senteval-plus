@@ -3,7 +3,6 @@ import sys
 import json
 import numpy as np
 import pandas as pd
-import questionary
 
 import random
 
@@ -151,22 +150,3 @@ class Evaluation:
         nclasses = len(classes)
 
         return X, y, nclasses
-
-    def get_classifier_name(selfs):
-        classifier = questionary.select(
-        "Which classifier do you want to use?",
-        choices=[
-            "Multi Layer Perceptron (MLP)",
-            "Logistic Regression",
-            "Support Vector Machine (SVM)",
-            "Random Forest",
-            "Naive Bayes"
-        ]).ask()
-        mapper = {
-            "Multi Layer Perceptron (MLP)": "mlp",
-            "Logistic Regression": "lr",
-            "Support Vector Machine (SVM)": "svm",
-            "Random Forest": "rf",
-            "Naive Bayes": "nb"
-        }
-        return mapper[classifier]
