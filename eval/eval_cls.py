@@ -54,7 +54,7 @@ class Evaluation:
                 IScore = IsoScore.IsoScore(X)
 
                 acc, acc_list, f1_w = self.sentEval(X, y, self.kfold, self.classifier, nclasses, dataset, 'No Whitening', encoder)
-                print(f'\twhitening method:  : {acc} : {f1_w}')
+                print(f'\taccuracy: {acc}, weighted f1: {f1_w}')
                 result = {
                     'dataset': dataset,
                     'encoder': encoder,
