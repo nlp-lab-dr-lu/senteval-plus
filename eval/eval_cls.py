@@ -33,8 +33,7 @@ class Evaluation:
         self.EMBEDDINGS_PATH = 'embeddings/' if 'EMBEDDINGS_PATH' not in config else config['EMBEDDINGS_PATH']
         self.RESULTS_PATH = 'results/' if 'RESULTS_PATH' not in config else config['RESULTS_PATH']
         self.drawcm = False if 'drawcm' not in config else config['drawcm']
-        self.classifier = self.get_classifier_name()
-        self.eval_whitening = True
+        self.classifier = 'mlp' if 'classifier' not in config else config['classifier']
         self.kfold = 5
         list_of_encoders = ["bert", "all-mpnet-base-v2", "simcse", "angle-bert", "angle-llama", "llama-7B", "llama2-7B", "text-embedding-3-small"]
         self.encoders = list_of_encoders if 'encoders' not in config else config['encoders']
