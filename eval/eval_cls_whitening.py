@@ -34,7 +34,7 @@ class WhiteningEvaluation:
         self.RESULTS_PATH = 'results/' if 'RESULTS_PATH' not in config else config['RESULTS_PATH']
         self.drawcm = False if 'drawcm' not in config else config['drawcm']
         self.classifier = 'mlp' if 'classifier' not in config else config['classifier']
-        self.whitening_methods = ['pca', 'zca', 'pca-cor', 'zca-cor', 'cholesky'] if 'whitenings_methods' not in config else config['whitenings_methods']
+        self.whitening_methods = ['pca', 'zca', 'pca_cor', 'zca_cor', 'cholesky'] if 'whitenings_methods' not in config else config['whitenings_methods']
         self.kfold = 5
         list_of_encoders = ["bert", "all-mpnet-base-v2", "simcse", "angle-bert", "angle-llama", "llama-7B", "llama2-7B", "text-embedding-3-small"]
         self.encoders = list_of_encoders if 'encoders' not in config else config['encoders']
