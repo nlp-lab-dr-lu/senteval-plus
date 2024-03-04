@@ -1,5 +1,6 @@
-<a href="https://colab.research.google.com/drive/1b9xuja2NFpS6gS5wHAWUSNzVSIDZdcHW?usp=sharing" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+SentEval+ Notebook: <a href="https://colab.research.google.com/drive/1b9xuja2NFpS6gS5wHAWUSNzVSIDZdcHW?usp=sharing" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
+Whitening Notebook: <a href="https://colab.research.google.com/drive/1w0Bdx9ScIxIFrBfTdHmQl6Y2RO7NSjZb?usp=sharing" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <h1>SentEval+</h1>
 
 <p>We are introducing SentEval+ , a framework built based on <a href='https://github.com/facebookresearch/SentEval'>SentEval</a> to both generate and evaluate embeddings.</p>
