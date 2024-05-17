@@ -1,0 +1,38 @@
+[
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "",
+        "pearson_value": 85.30704790249644,
+        "spearman_value": 84.18848939457841
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca",
+        "pearson_value": 69.56068363260161,
+        "spearman_value": 73.48316007701598
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca-cor",
+        "pearson_value": 66.10072690377861,
+        "spearman_value": 72.04831615598978
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca",
+        "pearson_value": 69.56068363260161,
+        "spearman_value": 73.48316007701598
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca-cor",
+        "pearson_value": 66.10072690377861,
+        "spearman_value": 72.04831615598978
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "cholesky",
+        "pearson_value": 69.56068363260161,
+        "spearman_value": 73.48316007701598
+    }
+]

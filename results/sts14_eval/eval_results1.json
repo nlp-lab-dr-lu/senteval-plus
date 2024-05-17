@@ -1,0 +1,38 @@
+[
+    {
+        "encoder": "angle-llama",
+        "whitening": "",
+        "pearson_value": 87.27240417838972,
+        "spearman_value": 85.62559537754414
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca-cor",
+        "pearson_value": 68.15212964746165,
+        "spearman_value": 77.99876186075564
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca-cor",
+        "pearson_value": 68.15212964746165,
+        "spearman_value": 77.99876186075564
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "cholesky",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    }
+]

@@ -1,0 +1,290 @@
+[
+    {
+        "encoder": "bert",
+        "whitening": "",
+        "pearson_value": 46.2284322807598,
+        "spearman_value": 43.296972206116926
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca",
+        "pearson_value": 56.878619523294525,
+        "spearman_value": 57.74565121482267
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca-cor",
+        "pearson_value": 56.86630422207468,
+        "spearman_value": 57.742556999268245
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca",
+        "pearson_value": 56.878619523294525,
+        "spearman_value": 57.74565121482267
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca-cor",
+        "pearson_value": 56.86630422207468,
+        "spearman_value": 57.742556999268245
+    },
+    {
+        "encoder": "bert",
+        "whitening": "cholesky",
+        "pearson_value": 56.878619523294525,
+        "spearman_value": 57.74565121482267
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "",
+        "pearson_value": 82.27112991962365,
+        "spearman_value": 78.00014308537445
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca",
+        "pearson_value": 77.67023927602231,
+        "spearman_value": 75.6399803658253
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca-cor",
+        "pearson_value": 77.12953041092146,
+        "spearman_value": 75.37682514377842
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca",
+        "pearson_value": 77.67023927602231,
+        "spearman_value": 75.6399803658253
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca-cor",
+        "pearson_value": 77.12953041092146,
+        "spearman_value": 75.37682514377842
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "cholesky",
+        "pearson_value": 77.67023927602231,
+        "spearman_value": 75.6399803658253
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "",
+        "pearson_value": 82.50515182443388,
+        "spearman_value": 80.18949193032768
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca",
+        "pearson_value": 78.52409484781235,
+        "spearman_value": 78.39796849506241
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca-cor",
+        "pearson_value": 78.29925414085885,
+        "spearman_value": 78.35909484864418
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca",
+        "pearson_value": 78.52409484781235,
+        "spearman_value": 78.39796849506241
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca-cor",
+        "pearson_value": 78.29925414085885,
+        "spearman_value": 78.35909484864418
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "cholesky",
+        "pearson_value": 78.52409484781235,
+        "spearman_value": 78.39796849506241
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "",
+        "pearson_value": 81.03243948109993,
+        "spearman_value": 78.64715616163332
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca",
+        "pearson_value": 74.63442219273612,
+        "spearman_value": 73.94837753819097
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca-cor",
+        "pearson_value": 74.62518785108472,
+        "spearman_value": 73.94494292535249
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca",
+        "pearson_value": 74.63442219273612,
+        "spearman_value": 73.94837753819097
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca-cor",
+        "pearson_value": 74.62518785108472,
+        "spearman_value": 73.94494292535249
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "cholesky",
+        "pearson_value": 74.63442219273612,
+        "spearman_value": 73.94837753819097
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "",
+        "pearson_value": 87.27240417838972,
+        "spearman_value": 85.62559537754414
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca-cor",
+        "pearson_value": 68.15212964746165,
+        "spearman_value": 77.99876186075564
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca-cor",
+        "pearson_value": 68.15212964746165,
+        "spearman_value": 77.99876186075564
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "cholesky",
+        "pearson_value": 68.15752179037075,
+        "spearman_value": 78.0011692631819
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "",
+        "pearson_value": 38.69231892257064,
+        "spearman_value": 40.74910653656594
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca",
+        "pearson_value": 50.807710639008995,
+        "spearman_value": 60.97352200331776
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 50.78580838339484,
+        "spearman_value": 60.96711964295404
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca",
+        "pearson_value": 50.807710639008995,
+        "spearman_value": 60.97352200331776
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 50.78580838339484,
+        "spearman_value": 60.96711964295404
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "cholesky",
+        "pearson_value": 50.807710639008995,
+        "spearman_value": 60.97352200331776
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "",
+        "pearson_value": 38.91832472190237,
+        "spearman_value": 39.875278520418995
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca",
+        "pearson_value": 49.95144181730365,
+        "spearman_value": 60.4011449103464
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 49.92699946589049,
+        "spearman_value": 60.39171119493454
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca",
+        "pearson_value": 49.95144181730365,
+        "spearman_value": 60.4011449103464
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 49.92699946589049,
+        "spearman_value": 60.39171119493454
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "cholesky",
+        "pearson_value": 49.95144181730365,
+        "spearman_value": 60.4011449103464
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "",
+        "pearson_value": 84.06144354933676,
+        "spearman_value": 79.837261149425
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca",
+        "pearson_value": 73.78236912973738,
+        "spearman_value": 73.81772470961678
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca-cor",
+        "pearson_value": 72.48790811621357,
+        "spearman_value": 73.23019863101379
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca",
+        "pearson_value": 73.78236912973738,
+        "spearman_value": 73.81772470961678
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca-cor",
+        "pearson_value": 72.48790811621357,
+        "spearman_value": 73.23019863101379
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "cholesky",
+        "pearson_value": 73.78236912973738,
+        "spearman_value": 73.81772470961678
+    }
+]

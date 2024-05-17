@@ -1,0 +1,290 @@
+[
+    {
+        "encoder": "bert",
+        "whitening": "",
+        "pearson_value": 58.48185746118774,
+        "spearman_value": 59.63407744349474
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca",
+        "pearson_value": 60.02285091968871,
+        "spearman_value": 61.731309030274005
+    },
+    {
+        "encoder": "bert",
+        "whitening": "zca-cor",
+        "pearson_value": 59.9760270477226,
+        "spearman_value": 61.7002658471105
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca",
+        "pearson_value": 60.02285091968871,
+        "spearman_value": 61.731309030274005
+    },
+    {
+        "encoder": "bert",
+        "whitening": "pca-cor",
+        "pearson_value": 59.9760270477226,
+        "spearman_value": 61.7002658471105
+    },
+    {
+        "encoder": "bert",
+        "whitening": "cholesky",
+        "pearson_value": 60.02285091968871,
+        "spearman_value": 61.731309030274005
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "",
+        "pearson_value": 78.82478574494473,
+        "spearman_value": 80.02996065312988
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca",
+        "pearson_value": 71.9035663360671,
+        "spearman_value": 72.98106206637335
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "zca-cor",
+        "pearson_value": 70.83873579441592,
+        "spearman_value": 72.15663601398519
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca",
+        "pearson_value": 71.9035663360671,
+        "spearman_value": 72.98106206637335
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "pca-cor",
+        "pearson_value": 70.83873579441592,
+        "spearman_value": 72.15663601398519
+    },
+    {
+        "encoder": "all-mpnet-base-v2",
+        "whitening": "cholesky",
+        "pearson_value": 71.9035663360671,
+        "spearman_value": 72.98106206637335
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "",
+        "pearson_value": 78.21075344358357,
+        "spearman_value": 80.8192098795508
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca",
+        "pearson_value": 73.29947117147553,
+        "spearman_value": 75.23965019933463
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "zca-cor",
+        "pearson_value": 72.68424037320577,
+        "spearman_value": 75.01539989481107
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca",
+        "pearson_value": 73.29947117147553,
+        "spearman_value": 75.23965019933463
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "pca-cor",
+        "pearson_value": 72.68424037320577,
+        "spearman_value": 75.01539989481107
+    },
+    {
+        "encoder": "simcse",
+        "whitening": "cholesky",
+        "pearson_value": 73.29947117147553,
+        "spearman_value": 75.23965019933463
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "",
+        "pearson_value": 78.774994884173,
+        "spearman_value": 81.15409456157116
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca",
+        "pearson_value": 68.74633009028571,
+        "spearman_value": 70.6893539345049
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "zca-cor",
+        "pearson_value": 68.71614613137955,
+        "spearman_value": 70.66968027581594
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca",
+        "pearson_value": 68.74633009028571,
+        "spearman_value": 70.6893539345049
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "pca-cor",
+        "pearson_value": 68.71614613137955,
+        "spearman_value": 70.66968027581594
+    },
+    {
+        "encoder": "angle-bert",
+        "whitening": "cholesky",
+        "pearson_value": 68.74633009028571,
+        "spearman_value": 70.6893539345049
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "",
+        "pearson_value": 84.74119285472584,
+        "spearman_value": 86.99228149599783
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca",
+        "pearson_value": 8.159346915185235,
+        "spearman_value": 49.476500340578795
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "zca-cor",
+        "pearson_value": 8.150543165859121,
+        "spearman_value": 49.2803051769793
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca",
+        "pearson_value": 8.159346915036107,
+        "spearman_value": 49.476500340578795
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "pca-cor",
+        "pearson_value": 8.150543165859121,
+        "spearman_value": 49.2803051769793
+    },
+    {
+        "encoder": "angle-llama",
+        "whitening": "cholesky",
+        "pearson_value": 8.159346914971612,
+        "spearman_value": 49.476500340578795
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "",
+        "pearson_value": 46.770795756803814,
+        "spearman_value": 52.775054619542125
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca",
+        "pearson_value": 8.27739069211143,
+        "spearman_value": 44.20082213681596
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 7.9465069609802566,
+        "spearman_value": 38.66590142079433
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca",
+        "pearson_value": 8.277390692112144,
+        "spearman_value": 44.20082213681596
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 7.9465069609802566,
+        "spearman_value": 38.66590142079433
+    },
+    {
+        "encoder": "llama-7B",
+        "whitening": "cholesky",
+        "pearson_value": 8.277390692374752,
+        "spearman_value": 44.20082213681596
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "",
+        "pearson_value": 48.190969803314914,
+        "spearman_value": 52.99504103320537
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca",
+        "pearson_value": 8.182920812171576,
+        "spearman_value": 42.7221834460684
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "zca-cor",
+        "pearson_value": 7.945224034568538,
+        "spearman_value": 38.86363840173526
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca",
+        "pearson_value": 8.182920812171576,
+        "spearman_value": 42.7221834460684
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "pca-cor",
+        "pearson_value": 7.945224034568538,
+        "spearman_value": 38.86363840173526
+    },
+    {
+        "encoder": "llama2-7B",
+        "whitening": "cholesky",
+        "pearson_value": 8.182920812311156,
+        "spearman_value": 42.7221834460684
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "",
+        "pearson_value": 83.48060041220833,
+        "spearman_value": 84.40735922876367
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca",
+        "pearson_value": 66.12594144502204,
+        "spearman_value": 71.45540236784204
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "zca-cor",
+        "pearson_value": 56.62562086118154,
+        "spearman_value": 67.8886994374229
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca",
+        "pearson_value": 66.12594144502204,
+        "spearman_value": 71.45540236784204
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "pca-cor",
+        "pearson_value": 56.62562086118154,
+        "spearman_value": 67.8886994374229
+    },
+    {
+        "encoder": "text-embedding-3-small",
+        "whitening": "cholesky",
+        "pearson_value": 66.12594144502204,
+        "spearman_value": 71.45540236784204
+    }
+]
