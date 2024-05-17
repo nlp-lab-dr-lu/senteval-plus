@@ -1,0 +1,92 @@
+[
+    {
+        "dataset": "mrpc",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "pca",
+        "accuracy": 73.92,
+        "f1_weighted": 71.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.5450893769139046,
+        "accuracy_list": [
+            71,
+            72,
+            72,
+            73,
+            71
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "zca",
+        "accuracy": 72.0,
+        "f1_weighted": 69.2,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.5450893769139042,
+        "accuracy_list": [
+            69,
+            71,
+            67,
+            70,
+            69
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "pca-cor",
+        "accuracy": 73.23,
+        "f1_weighted": 69.0,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999999980216888,
+        "accuracy_list": [
+            69,
+            69,
+            70,
+            68,
+            69
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "zca-cor",
+        "accuracy": 71.87,
+        "f1_weighted": 67.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999999980216888,
+        "accuracy_list": [
+            70,
+            66,
+            67,
+            67,
+            68
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "cholesky",
+        "accuracy": 73.09,
+        "f1_weighted": 71.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.545089376913904,
+        "accuracy_list": [
+            71,
+            70,
+            74,
+            71,
+            71
+        ],
+        "kfold": 5
+    }
+]

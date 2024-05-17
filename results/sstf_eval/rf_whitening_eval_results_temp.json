@@ -1,0 +1,182 @@
+[
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "pca",
+        "accuracy": 33.36,
+        "f1_weighted": 25.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9998273704129239,
+        "accuracy_list": [
+            25,
+            27,
+            27,
+            26,
+            24
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "zca",
+        "accuracy": 27.0,
+        "f1_weighted": 20.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9998273704129239,
+        "accuracy_list": [
+            21,
+            21,
+            21,
+            20,
+            21
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "pca-cor",
+        "accuracy": 32.99,
+        "f1_weighted": 25.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999998469757273,
+        "accuracy_list": [
+            26,
+            26,
+            24,
+            26,
+            26
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "zca-cor",
+        "accuracy": 26.93,
+        "f1_weighted": 20.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999998469757273,
+        "accuracy_list": [
+            20,
+            21,
+            20,
+            21,
+            20
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "cholesky",
+        "accuracy": 29.02,
+        "f1_weighted": 22.2,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9998273704129239,
+        "accuracy_list": [
+            22,
+            22,
+            22,
+            22,
+            23
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "pca",
+        "accuracy": 44.07,
+        "f1_weighted": 34.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9690164828858135,
+        "accuracy_list": [
+            35,
+            35,
+            34,
+            35,
+            35
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "zca",
+        "accuracy": 29.41,
+        "f1_weighted": 22.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9690164828858135,
+        "accuracy_list": [
+            24,
+            23,
+            23,
+            22,
+            21
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "pca-cor",
+        "accuracy": 44.54,
+        "f1_weighted": 35.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999999818289599,
+        "accuracy_list": [
+            35,
+            36,
+            36,
+            35,
+            36
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "zca-cor",
+        "accuracy": 29.06,
+        "f1_weighted": 22.2,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9999999818289599,
+        "accuracy_list": [
+            22,
+            23,
+            22,
+            22,
+            22
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "cholesky",
+        "accuracy": 32.43,
+        "f1_weighted": 25.0,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.9690164828858135,
+        "accuracy_list": [
+            25,
+            26,
+            25,
+            25,
+            24
+        ],
+        "kfold": 5
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "dataset": "mrpc",
+        "encoder": "bert",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 73.28,
+        "f1_weighted": 71.4,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.000522819694885325,
+        "accuracy_list": [
+            70,
+            70,
+            73,
+            73,
+            71
+        ],
+        "kfold": 5
+    }
+]

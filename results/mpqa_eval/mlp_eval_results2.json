@@ -1,0 +1,20 @@
+[
+    {
+        "dataset": "mpqa",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 86.76,
+        "f1_weighted": 86.8,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.0026960079578130466,
+        "accuracy_list": [
+            87,
+            87,
+            85,
+            88,
+            87
+        ],
+        "kfold": 5
+    }
+]

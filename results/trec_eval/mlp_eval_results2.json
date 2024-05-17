@@ -1,0 +1,20 @@
+[
+    {
+        "dataset": "trec",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 89.43,
+        "f1_weighted": 89.6,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.01047467622331638,
+        "accuracy_list": [
+            89,
+            91,
+            89,
+            89,
+            90
+        ],
+        "kfold": 5
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "dataset": "mr",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 91.05,
+        "f1_weighted": 91.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.024369768349466435,
+        "accuracy_list": [
+            92,
+            90,
+            91,
+            91,
+            92
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "cr",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 92.69,
+        "f1_weighted": 92.4,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.017329359960291783,
+        "accuracy_list": [
+            93,
+            92,
+            93,
+            92,
+            92
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "subj",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 97.05,
+        "f1_weighted": 97.0,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.026249534701964703,
+        "accuracy_list": [
+            97,
+            97,
+            97,
+            97,
+            97
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mpqa",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 90.2,
+        "f1_weighted": 90.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.0187876536306404,
+        "accuracy_list": [
+            90,
+            90,
+            90,
+            90,
+            91
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 89.08,
+        "f1_weighted": 89.4,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.04978215437340062,
+        "accuracy_list": [
+            88,
+            89,
+            91,
+            88,
+            91
+        ],
+        "kfold": 5
+    }
+]

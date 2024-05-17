@@ -1,0 +1,20 @@
+[
+    {
+        "dataset": "mr",
+        "encoder": "gte-Qwen1.5-7B-instruct",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 91.05,
+        "f1_weighted": 91.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.024369768349466435,
+        "accuracy_list": [
+            92,
+            90,
+            91,
+            91,
+            92
+        ],
+        "kfold": 5
+    }
+]

@@ -1,0 +1,110 @@
+[
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 71.35,
+        "f1_weighted": 67.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.00024887574637446914,
+        "accuracy_list": [
+            71,
+            59,
+            70,
+            72,
+            64
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "pca",
+        "accuracy": 67.3,
+        "f1_weighted": 54.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.7079696958743887,
+        "accuracy_list": [
+            54,
+            54,
+            55,
+            54,
+            54
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "zca",
+        "accuracy": 67.23,
+        "f1_weighted": 54.0,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.7079696958743891,
+        "accuracy_list": [
+            54,
+            54,
+            54,
+            54,
+            54
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "pca-cor",
+        "accuracy": 66.07,
+        "f1_weighted": 57.6,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.7079719408023234,
+        "accuracy_list": [
+            54,
+            62,
+            54,
+            64,
+            54
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "zca-cor",
+        "accuracy": 66.8,
+        "f1_weighted": 54.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.7079719408023237,
+        "accuracy_list": [
+            55,
+            54,
+            54,
+            54,
+            54
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "mrpc",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "cholesky",
+        "accuracy": 67.23,
+        "f1_weighted": 54.0,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.7079696958743891,
+        "accuracy_list": [
+            54,
+            54,
+            54,
+            54,
+            54
+        ],
+        "kfold": 5
+    }
+]

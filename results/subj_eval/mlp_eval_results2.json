@@ -1,0 +1,20 @@
+[
+    {
+        "dataset": "subj",
+        "encoder": "llama3-8B",
+        "classfier": "mlp",
+        "whitening": "",
+        "accuracy": 96.18,
+        "f1_weighted": 96.2,
+        "rocauc_weighted": "N/A",
+        "IScore": 0.008058506739226102,
+        "accuracy_list": [
+            96,
+            96,
+            96,
+            96,
+            97
+        ],
+        "kfold": 5
+    }
+]

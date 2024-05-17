@@ -1,0 +1,626 @@
+[
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            0.02,
+            0.0,
+            0.0,
+            0.07,
+            0.0
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.01,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.01,
+            0.0,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.04
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.13,
+            0.02,
+            0.0,
+            0.09
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            0.01,
+            30.24,
+            0.0,
+            0.07,
+            0.05
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.0,
+            0.04,
+            0.0,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.08,
+            0.02,
+            0.37,
+            0.02,
+            0.0
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.01,
+            0.02,
+            0.0,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.04,
+            0.06,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "all-mpnet-base-v2",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.0,
+            0.03,
+            0.03,
+            0.0
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            19.42,
+            22.19,
+            10.08,
+            18.55,
+            2.51
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.08,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.09,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.09,
+            0.02,
+            0.06,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.0,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "simcse",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.1,
+            0.02,
+            0.02,
+            0.02,
+            0.37
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            8.85,
+            1.24,
+            10.54,
+            0.08,
+            16.84
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.26,
+            0.02,
+            0.01,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.08
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.0,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-bert",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.0,
+            0.02,
+            0.14,
+            0.04
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            43.19,
+            42.37,
+            41.99,
+            40.88,
+            43.65
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.0,
+            0.02,
+            0.01
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "angle-llama",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.0,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            0.31,
+            0.24,
+            0.26,
+            0.26,
+            0.28
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.0,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.01,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            0.3,
+            0.3,
+            0.2,
+            0.28,
+            0.2
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "llama2-7B",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.02,
+            0.03,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "",
+        "v_measure": [
+            0.55,
+            0.01,
+            0.02,
+            0.16,
+            0.09
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca",
+        "v_measure": [
+            0.0,
+            0.08,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.27,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "pca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "zca_cor",
+        "v_measure": [
+            0.02,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    },
+    {
+        "dataset": "mr",
+        "encoder": "text-embedding-3-small",
+        "clustering": "mini_batch_k_means",
+        "whitening": "cholesky",
+        "v_measure": [
+            0.03,
+            0.02,
+            0.02,
+            0.02,
+            0.02
+        ]
+    }
+]

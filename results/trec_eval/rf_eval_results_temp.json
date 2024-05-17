@@ -1,0 +1,146 @@
+[
+    {
+        "dataset": "trec",
+        "encoder": "bert",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 79.59,
+        "f1_weighted": 79.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.06255006561781816,
+        "accuracy_list": [
+            81,
+            79,
+            79,
+            79,
+            79
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "all-mpnet-base-v2",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 78.51,
+        "f1_weighted": 78.2,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.15323062226572015,
+        "accuracy_list": [
+            79,
+            76,
+            77,
+            79,
+            80
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "simcse",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 71.13,
+        "f1_weighted": 70.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.09495031529499551,
+        "accuracy_list": [
+            71,
+            70,
+            70,
+            72,
+            71
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "angle-bert",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 73.04,
+        "f1_weighted": 72.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.09468282733127648,
+        "accuracy_list": [
+            72,
+            73,
+            72,
+            72,
+            74
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "angle-llama",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 81.69,
+        "f1_weighted": 81.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.03205638121086004,
+        "accuracy_list": [
+            81,
+            82,
+            83,
+            80,
+            81
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "llama-7B",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 77.32,
+        "f1_weighted": 77.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.0038610206032160138,
+        "accuracy_list": [
+            79,
+            78,
+            76,
+            78,
+            77
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "llama2-7B",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 77.12,
+        "f1_weighted": 77.0,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.0037122515125054306,
+        "accuracy_list": [
+            77,
+            78,
+            79,
+            73,
+            78
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "trec",
+        "encoder": "text-embedding-3-small",
+        "classfier": "rf",
+        "whitening": "",
+        "accuracy": 77.86,
+        "f1_weighted": 77.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.13035724034226712,
+        "accuracy_list": [
+            77,
+            77,
+            78,
+            78,
+            77
+        ],
+        "kfold": 5
+    }
+]

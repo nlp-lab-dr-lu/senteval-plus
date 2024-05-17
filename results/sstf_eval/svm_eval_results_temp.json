@@ -1,0 +1,146 @@
+[
+    {
+        "dataset": "sstf",
+        "encoder": "bert",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 49.4,
+        "f1_weighted": 46.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.04957902598306036,
+        "accuracy_list": [
+            47,
+            46,
+            47,
+            48,
+            46
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "all-mpnet-base-v2",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 50.65,
+        "f1_weighted": 48.2,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.1259447578156118,
+        "accuracy_list": [
+            48,
+            47,
+            50,
+            48,
+            48
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "simcse",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 50.3,
+        "f1_weighted": 47.6,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.07537264717423767,
+        "accuracy_list": [
+            48,
+            47,
+            48,
+            47,
+            48
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "angle-bert",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 50.1,
+        "f1_weighted": 48.0,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.05978321340513289,
+        "accuracy_list": [
+            48,
+            47,
+            48,
+            48,
+            49
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "angle-llama",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 58.08,
+        "f1_weighted": 56.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.019361755175322043,
+        "accuracy_list": [
+            57,
+            55,
+            57,
+            58,
+            57
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama-7B",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 52.51,
+        "f1_weighted": 50.0,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.0015089709265863418,
+        "accuracy_list": [
+            49,
+            51,
+            50,
+            50,
+            50
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "llama2-7B",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 52.14,
+        "f1_weighted": 49.4,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.0016256194834950732,
+        "accuracy_list": [
+            50,
+            50,
+            49,
+            49,
+            49
+        ],
+        "kfold": 5
+    },
+    {
+        "dataset": "sstf",
+        "encoder": "text-embedding-3-small",
+        "classfier": "svm",
+        "whitening": "",
+        "accuracy": 55.55,
+        "f1_weighted": 53.8,
+        "rocauc_weighted": 0.0,
+        "IScore": 0.09887370231227291,
+        "accuracy_list": [
+            54,
+            54,
+            54,
+            53,
+            54
+        ],
+        "kfold": 5
+    }
+]
