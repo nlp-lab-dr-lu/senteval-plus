@@ -139,23 +139,16 @@ class Evaluation:
             data_train = pd.read_csv(path+'_train_embeddings.csv' ,sep='\t')
             data_test = pd.read_csv(path+'_test_embeddings.csv' ,sep='\t')
             data = pd.concat([data_train, data_test], axis=0)
-        elif(dataset_name in emb_util.bio_datasets):
-            data = pd.read_csv('https://jlu.myweb.cs.uwindsor.ca/embeddings/MolNet/bbbp/llama2-7B_bbbp_embeddings.csv', index_col='Unnamed: 0')
         elif(dataset_name in emb_util.unsplitted_datasets):
             data = pd.read_csv(path+'_embeddings.csv', sep='\t')
         else:
             raise Exception(f"Could'nt find embeddings file in {path}")
-
         data = emb_util.check_and_reorder_dataframe(data)
-        # get labels only
         labels = []
         for i, data_row in data.iterrows():
             labels.append(data_row['label'])
         y = np.array(labels)
-        # getting embeddings only
         X = np.array(data.iloc[:, 2:])
-
-        # get number of classes
         classes = np.unique(y)
         nclasses = len(classes)
 

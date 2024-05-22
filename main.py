@@ -4,7 +4,6 @@ from encoders.sbert_base import SBert_Embeddings
 from encoders.angle_base import Angle_Embeddings
 from encoders.chatGPT import ChatGPT_Embeddings
 from encoders.simcse_base import SimCSE_Embeddings
-from encoders.gte_base import GTE_Embeddings
 from data import *
 
 '''
@@ -28,7 +27,7 @@ models_simcse = ["simcse"]
 options for models_llama:
     "llama-7B", "llama-13B", "llama-30B", "llama-65B", "llama2-7B", "llama2-13B", "llama2-70B"
 '''
-models_llama = ["llama-7B", "llama2-7B"] #, "llama3-8B"
+models_llama = ["llama-7B", "llama2-7B"]
 '''
 options for models_angle:
     angle-bert    : fine tuned bert on nli dataset
@@ -46,13 +45,6 @@ models_chatGPT = ["text-embedding-3-small"]
 options for models_chatGPT:
     gte-Qwen1.5-7B-instruct  : 79.6 in MTEB, ranked second in MTEB
 '''
-models_gte = ["gte-Qwen1.5-7B-instruct"]
-'''
-options for datasets:
-    built-in train/test split:
-        "yelpp", "imdb", "agnews", "yelpf", "trec", "sstf", "mrpc1", "mrpc2"
-'''
-
 splitted_datasets = ["yelpp", "imdb", "agnews", "yelpf", "trec", "sstf", "mrpc"]
 '''
     no built-in train/test split:
@@ -67,7 +59,7 @@ similarity_datasets = ["stsb1", "stsb2", "sts121", "sts122", "sts131", "sts132",
 
 datasets = ["mr", "cr", "subj", "mpqa", "trec", "mrpc", "sstf"] + similarity_datasets
 
-models = models_gte #models_sbert + models_bert + models_simcse + models_angle + models_llama + models_gte + models_chatGPT
+models = models_sbert + models_bert + models_simcse + models_angle + models_llama + models_chatGPT
 
 for model in models:
     if(model in models_sbert):
@@ -82,6 +74,3 @@ for model in models:
         Llama_Embeddings(model, datasets)
     elif(model in models_chatGPT):
         ChatGPT_Embeddings(model, datasets)
-    elif(model in models_gte):
-        GTE_Embeddings(model, datasets)
-

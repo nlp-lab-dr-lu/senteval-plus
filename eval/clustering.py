@@ -46,9 +46,7 @@ class ClusteringEvaluation:
                     )
                     clustering_model.fit(X)
                     v_measure = round(silhouette_score(X, clustering_model.labels_ ) * 100, 2)
-                    # v_measure = round(sklearn.metrics.cluster.v_measure_score(y, clustering_model.labels_ ) * 100, 2)
                     v_measure_list.append(v_measure)
-                    # self.results.append(((encoder, v_measure, X, clustering_model.labels_)))
                 json_result = {
                     'dataset': dataset,
                     'encoder': encoder,
@@ -72,9 +70,7 @@ class ClusteringEvaluation:
                         )
                         clustering_model.fit(X_whitened)
                         v_measure = round(silhouette_score(X_whitened, clustering_model.labels_ ) * 100, 2)
-                        # v_measure = round(sklearn.metrics.cluster.v_measure_score(y, clustering_model.labels_ ) * 100, 2)
                         v_measure_list.append(v_measure)
-                        # self.results.append(((encoder, v_measure, X, clustering_model.labels_)))
                     json_result = {
                         'dataset': dataset,
                         'encoder': encoder,
@@ -90,8 +86,6 @@ class ClusteringEvaluation:
                 logger.info(f'saving evaluation results in "{path}"')
                 with open(path, "w") as outfile:
                     outfile.write(json_object)
-
-        # self.draw_plot()
 
     def load_data(self, dataset_name, encoder_name):
         path = f'{self.EMBEDDINGS_PATH}/{dataset_name}/{encoder_name}_{dataset_name}'
@@ -130,15 +124,11 @@ class ClusteringEvaluation:
             raise Exception(f"Could'nt find embeddings file in {path}")
 
         data = emb_util.check_and_reorder_dataframe(data)
-        # get labels only
         labels = []
         for i, data_row in data.iterrows():
             labels.append(data_row['label'])
         y = np.array(labels)
-        # getting embeddings only
         X = np.array(data.iloc[:, 2:])
-
-        # get number of classes
 
         classes = np.unique(y)
         nclasses = len(classes)
@@ -198,7 +188,6 @@ class ClusteringEvaluation:
         for font_file in font_files:
             font_manager.fontManager.addfont(font_file)
 
-        # Verify the font is recognized by Matplotlib
         font_name = "Times New Roman"
         if font_name in font_manager.get_font_names():
             print(f"'{font_name}' font successfully added.")

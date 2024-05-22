@@ -1,8 +1,6 @@
 import os
-import glob
 import numpy as np
 import pandas as pd
-from itertools import combinations
 import logging
 import matplotlib
 from matplotlib import font_manager
@@ -34,18 +32,9 @@ def save_embeddings(embeddings, dataset, model_name, dataset_name, split):
         os.makedirs(dir_path)
         print(f"Directory '{dir_path}' was created.")
 
-    # path = f'embeddings/sts/{self.model_name}_{split}_embeddings.csv'
     data.to_csv(path, sep='\t', index=False)
 
 def get_layers_mean(model_name, dataset, embeddings_list):
-    # numbers = list(range(1, 33))
-    # all_tuples = list(combinations(numbers, 2))
-    # datasets = ["sts1", "sts2"]
-    # model_names = ["llama2-7B"]
-    # for model_name in model_names:
-    #     for dataset in datasets:
-    #         for tpl in all_tuples:
-    #             get_layers_mean(model_name, dataset, [tpl[0], tpl[1]])
     base_path = 'results/embeddings_sts/llama_layers'
     path1 = f'{base_path}/{model_name}-layer-{embeddings_list[0]}_{dataset}_test_embeddings.csv'
     path2 = f'{base_path}/{model_name}-layer-{embeddings_list[1]}_{dataset}_test_embeddings.csv'
@@ -87,18 +76,6 @@ def download_fonts():
     else:
         print(f"'{font_name}' font not found. Please check the font installation.")
 
-def draw_cm(self, cm_data, dataset, whitening_method, encoder, download_font=False):
-    cm = confusion_matrix(cm_data['y_test'], cm_data['y_pred'], labels=np.unique(cm_data['y_test']))
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=np.unique(cm_data['y_test']))
-    fig, ax = plt.subplots(figsize=(4, 4))
-    ax.set_axis_off()
-    ax.set_title(whitening_method.upper())
-    plt.rcParams.update({'font.size': 30})
-    disp.plot(ax=ax, cmap='Blues', colorbar=False, values_format='d')
-    path = f'{self.RESULTS_PATH}/{dataset}_eval/cm/{encoder}-{whitening_method}-cm.pdf'
-    print('svaing cm plot',path)
-    fig.savefig(path, format='pdf')
-
 def check_and_reorder_dataframe(df):
     # print('col names:',df.columns.tolist())
     if('SMILES' in df.columns.tolist()):
@@ -123,76 +100,3 @@ def check_and_reorder_dataframe(df):
             raise Exception(f"'{col}' column must be of float type")
 
     return df
-
-def sep_vecs_txtlbl(file):
-    print(file)
-    df = pd.read_csv(file, sep='\t')
-    # df = df.drop(["Unnamed: 0.1", "Unnamed: 0"], axis=1)
-    # df = df.sort_index(axis=1, ascending=False)
-    vecs = df.iloc[:,2:]
-    txt_labels = df.iloc[:,0:2]
-
-    cols = vecs.columns.values.tolist()
-    cols = [eval(i) for i in cols]
-    cols.sort()
-    cols = map(str, cols)
-    vecs = vecs[cols]
-
-    splited_path = file.split("/")
-
-    vecs_path = splited_path[3].replace('embeddings', 'vecs')
-    vecs.to_csv(f'./results/embeddings_cleaned/{vecs_path}', index=False, sep='\t')
-
-    txt_labels_path = splited_path[3].replace('embeddings', 'txtlbl')
-    txt_labels.to_csv(f'./results/embeddings_cleaned/{txt_labels_path}', index=False, sep='\t')
-
-def sort_vecs(file):
-    print(file)
-    df = pd.read_csv(file, sep='\t')
-    vecs = df.iloc[:,2:]
-    txt_labels = df.iloc[:,0:2]
-
-    cols = vecs.columns.values.tolist()
-    cols = [eval(i) for i in cols]
-    cols.sort()
-    cols = map(str, cols)
-    vecs = vecs[cols]
-    df = pd.concat([txt_labels, vecs], axis=1)
-    print(df.head())
-
-    splited_path = file.split("/")
-
-    df_path = splited_path[3]
-    df.to_csv(f'./results/embeddings_cleaned/{df_path}', index=False, sep='\t')
-
-
-def select_n_instances(file, n):
-    df = pd.read_csv(file, sep='\t')
-    print(file)
-    print(df)
-    per_class = np.round(n / df.label.nunique()).astype(int)
-    print(per_class)
-    df = df.groupby('label').head(per_class).sample(frac=1).reset_index(drop=True)
-
-    splited_path = file.split("/")
-
-    df_path = splited_path[3]
-    df.to_csv(f'./results/embeddings/{df_path}', index=False, sep='\t')
-    print(df)
-
-def join_vecs_txtlbl(file_txtlbl, file_vecs):
-    df_txtlbl = pd.read_csv(file_txtlbl, sep='\t')
-    print(df_txtlbl)
-    df_vecs = pd.read_csv(file_vecs, sep='\t')
-    print(df_vecs)
-
-    df = pd.concat([df_txtlbl, df_vecs], axis=1)
-    df.to_csv(f'./results/embeddings/llama2-7B_yelpf_test_embeddings.csv', index=False, sep='\t')
-    print(df)
-
-# for file in glob.iglob('./results/embeddings/*.csv'):
-#     sep_vecs_txtlbl(file)
-    # sep_vecs_txtlbl(file)
-    # sort_vecs(file)
-    # select_n_instances(file, 4500)
-    # join_vecs_txtlbl(file_txtlbl, file_vecs)

@@ -58,9 +58,6 @@ class Evaluation:
                 if self.eval_whitening:
                     whitenings = ['zca', 'zca_cor', 'pca', 'pca_cor', 'cholesky']
                     for whitening in whitenings:
-                        # if ((encoder == 'angle-llama' or encoder == 'llama-7B' or encoder == 'llama2-7B') and whitening == 'cholesky'):
-                        #     continue
-                        
                         df_sent1_whitened, df_sent2_whitened = self.do_whitening(df_sent1, df_sent2, whitening)
                         whitening = 'zca-cor' if whitening == 'zca_cor' else whitening # make sure to be consistant in file names
                         whitening = 'pca-cor' if whitening == 'pca_cor' else whitening # make sure to be consistant in file names
@@ -107,8 +104,6 @@ class Evaluation:
 
         df_results = pd.DataFrame(cos_sims, columns=['cos_sim'])
         df_results = pd.concat([df_results, df_scores], axis=1)
-        # print('min found in cos_sim:', df_results['cos_sim'].min())
-        # print('min found in score:', df_results['score'].min())
 
         path = f'{self.RESULTS_PATH}/{dataset}_eval/cosim'
         if not os.path.exists(path):

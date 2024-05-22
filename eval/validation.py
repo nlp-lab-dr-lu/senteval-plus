@@ -10,7 +10,7 @@ assert (sklearn.__version__ >= "0.18.0"), \
     "need to update sklearn to version >= 0.18.0"
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import f1_score, accuracy_score, roc_auc_score #For the binary case will return F1 score for pos_label
+from sklearn.metrics import f1_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
@@ -110,15 +110,6 @@ class InnerKFoldClassifier(object):
             if self.modelname == 'lr':
                 regs = [2 ** t for t in range(-2, 4, 1)]
                 scores = []
-                # for reg in regs:
-                #     regscores = []
-                #     for inner_train_idx, inner_test_idx in innerskf.split(X_train, y_train):
-                #         X_in_train, X_in_test = X_train[inner_train_idx], X_train[inner_test_idx]
-                #         y_in_train, y_in_test = y_train[inner_train_idx], y_train[inner_test_idx]
-                #         clf = LogisticRegression(C=reg, random_state=self.seed, max_iter=5000)
-                #         clf.fit(X_in_train, y_in_train)
-                #         regscores.append(clf.score(X_in_test, y_in_test))
-                #     scores.append(round(100 * np.mean(regscores), 2))
                 optreg = regs[np.argmax(scores)] if len(scores) > 0 else 1.0
                 clf = LogisticRegression(C=optreg, random_state=self.seed, max_iter=5000)
             elif self.modelname == 'svm':
@@ -131,20 +122,12 @@ class InnerKFoldClassifier(object):
                 raise Exception("unknown classifier")
 
             clf.fit(X_train, y_train)
-            # calculate accuracy
             self.testaccs.append(round(100 * clf.score(X_test, y_test), 2))
-            # calculate f1
             y_pred = clf.predict(X_test)
             self.testf1s.append(round(100 * f1_score(y_test, y_pred, average='weighted')))
             cm_data = {'y_test': y_test, 'y_pred': y_pred}
-            # calculate roc
-            # y_pred_proba = clf.predict_proba(X_test)[:,1]
-            # auc = roc_auc_score(y_test, y_pred_proba, average='weighted')
             auc = 0
             self.testaucs.append(round(100 * auc))
-            # print(f'\tAUC of {count} fold: {auc}')
-
-        # devaccuracy = round(np.mean(self.devresults), 2)
         devaccuracy = None
         testaccuracy = round(np.mean(self.testaccs), 2)
         testf1 = round(np.mean(self.testf1s), 2)

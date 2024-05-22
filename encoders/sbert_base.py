@@ -28,14 +28,12 @@ class SBert_Embeddings:
             split: the split name string to save embeddings in a path
             save: T/F value to save the model in results directory
         '''
-
         embeddings = []
         for i, data_row in tqdm(dataset.iterrows()):
             data_row['text'] = '' if data_row['text'] == None else data_row['text']
             embedding = self.model.encode(data_row['text'])
             embeddings.append(np.array(embedding))
-
         if (save):
             save_embeddings(embeddings, dataset, self.model_name, self.dataset_name, split)
-
+            
         return embeddings

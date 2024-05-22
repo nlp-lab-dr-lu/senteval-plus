@@ -11,9 +11,7 @@ class Bert_Embeddings:
     def __init__(self, model_name, datasets):
 
         self.model_name = model_name
-        self.model = BertModel.from_pretrained("bert-base-uncased",
-                                                # output_hidden_states = True
-                                                )
+        self.model = BertModel.from_pretrained("bert-base-uncased")
         self.model.to("cuda")
         self.model.eval()
         self.tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
@@ -66,21 +64,3 @@ class Bert_Embeddings:
             save_embeddings(embeddings, dataset, self.model_name, self.dataset_name, split)
         
         return embeddings
-
-# if __name__ == "__main__":
-#     bert_embeddings = Bert_Embeddings("bert", "imdb")
-
-# investigating layers:
-# hidden_states = outputs[2]
-# print ("Number of layers:", len(hidden_states), "  (initial embeddings + 12 BERT layers)")
-# layer_i = 0
-# print ("Number of batches:", len(hidden_states[layer_i]))
-# batch_i = 0
-# print ("Number of tokens:", len(hidden_states[layer_i][batch_i]))
-# token_i = 0
-# print ("Number of hidden units:", len(hidden_states[layer_i][batch_i][token_i]))
-
-# print(data_row['text'])
-# print(outputs.last_hidden_state.shape)
-# print(embedding.shape)
-# embedding = torch.mean(outputs[2][1:], dim=1)

@@ -6,10 +6,8 @@ import emb_util
 from emb_util import logger, save_embeddings
 from data import get_dataset
 
-
 class SimCSE_Embeddings:
     def __init__(self, model_name, datasets):
-        # The base Bert Model transformer outputting raw hidden-states without any specific head on top.
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained("princeton-nlp/sup-simcse-bert-base-uncased")
         self.model = AutoModel.from_pretrained("princeton-nlp/sup-simcse-bert-base-uncased")
@@ -32,17 +30,12 @@ class SimCSE_Embeddings:
             split: the split name string to save embeddings in a path
             save: T/F value to save the model in results directory
         '''
-
         embeddings = []
         for i, data_row in tqdm(dataset.iterrows()):
-        
             tokens = self.tokenizer(data_row['text'], padding=True, truncation=True, return_tensors="pt")
-
             with torch.no_grad():
                 embedding = self.model(**tokens, output_hidden_states=True, return_dict=True).pooler_output
-
             embeddings.append(np.array(embedding[0]))
-        
         if (save):
             save_embeddings(embeddings, dataset, self.model_name, self.dataset_name, split)
 
