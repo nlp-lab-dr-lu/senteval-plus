@@ -11,9 +11,6 @@ def get_dataset(dataset_name):
     elif(dataset_name in emb_util.splitted_datasets):
         path_train = f'data/tcls_datasets/{dataset_name}_train.csv'
         path_test = f'data/tcls_datasets/{dataset_name}_test.csv'
-    elif(dataset_name in emb_util.bio_datasets):
-        path_train = f'data/bio_data/{dataset_name}/{dataset_name}.csv'
-        path_test = f'data/bio_data/{dataset_name}/{dataset_name}.csv'
     elif(dataset_name in emb_util.clustering_datasets):
         path_train = f'data/tclu_datasets/{dataset_name}.csv'
         path_test = f'data/tclu_datasets/{dataset_name}.csv'
