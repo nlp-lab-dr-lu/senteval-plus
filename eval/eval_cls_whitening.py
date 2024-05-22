@@ -4,18 +4,19 @@ import json
 import numpy as np
 import pandas as pd
 import random
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import emb_util
+from emb_util import logger
 
 # from whitening import whiten
 from .whitening import Whitens
 from .validation import InnerKFoldMLPClassifier, InnerKFoldClassifier
 from IsoScore import IsoScore
 
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
-import matplotlib.pyplot as plt
 
 class WhiteningEvaluation:
     def __init__(self, config):
@@ -25,7 +26,7 @@ class WhiteningEvaluation:
                 RESULTS_PATH: path to save results
                 drawcm: whether to draw the confusion matrix or not
                 classifier: type of classifier for classification task ['lr', 'rf', 'nv', 'svm']
-                whitenings_methods: type of whitening methods for classification task ['pca', 'zca', 'pca-cor', 'zca-cor', 'cholesky']
+                whitenings_methods: type of whitening methods for classification task ['pca', 'zca', 'pca_cor', 'zca_cor', 'cholesky']
                 kfold: number of folds for k fold inner classification
                 encoders: list of encoders to evaluate
                 datasets: list of datasets for evaluation ["mr", "cr", "subj", "mpqa", "trec", "mrpc", "sstf", "bbbp"]
@@ -38,7 +39,6 @@ class WhiteningEvaluation:
         self.kfold = 5
         list_of_encoders = ["bert", "all-mpnet-base-v2", "simcse", "angle-bert", "angle-llama", "llama-7B", "llama2-7B", "text-embedding-3-small"]
         self.encoders = list_of_encoders if 'encoders' not in config else config['encoders']
-
         if 'datasets' not in config:
             raise Exception("No datasets decleard")
         else:
@@ -51,11 +51,11 @@ class WhiteningEvaluation:
             for encoder in self.encoders:
                 X, y, nclasses = self.load_data(dataset, encoder)
                 for method in self.whitening_methods:
-                    print(f"\n<<evaluating {dataset.capitalize()} with {method.upper()} whitened {encoder.capitalize()} using {self.classifier.upper()} classifier>>")
+                    logger.info(f"evaluating {dataset.upper()} dataset with {method.upper()} whitened {encoder.upper()} using {self.classifier.upper()} classifier")
                     trf = Whitens().fit(X, method = method)
                     X_whitened = trf.transform(X) # X is whitened
-                    acc, acc_list, f1_w = self.sentEval(X_whitened, y, self.kfold, self.classifier, nclasses, dataset, method, encoder)
-                    print(f'\twhitening method: {method} : {acc} : {f1_w}')
+                    acc, acc_list, f1_w, roc_auc = self.sentEval(X_whitened, y, self.kfold, self.classifier, nclasses, dataset, method, encoder)
+                    logger.info(f'accuracy : {acc} , weighted f1 : {f1_w}')
                     IScore = IsoScore.IsoScore(X_whitened)
 
                     method = 'zca-cor' if method == 'zca_cor' else method # make sure to be consistant in file names
@@ -67,53 +67,41 @@ class WhiteningEvaluation:
                         'whitening': method,
                         'accuracy': acc,
                         'f1_weighted': f1_w,
+                        'rocauc_weighted': roc_auc,
                         'IScore': IScore.item(),
                         'accuracy_list': acc_list,
                         'kfold': self.kfold
-                    }
+                     }
                     self.results.append(result)
 
                 json_object = json.dumps(self.results, indent=4)
-                with open(f"{self.RESULTS_PATH}/{dataset}_eval/{self.classifier}_eval_results3.json", "w") as outfile:
+                path = f"{self.RESULTS_PATH}/{dataset}_eval/{self.classifier}_whitening_eval_results_temp.json"
+                logger.info(f'saving evaluation results in "{path}"')
+                with open(path, "w") as outfile:
                     outfile.write(json_object)
+                logger.info(f'The evaluation successfully completed.')
         return self.results
 
     def sentEval(self, X, y, kfold, classifier, nclasses, dataset, whitening_method, encoder):
+        cls_config = {
+            'nclasses': nclasses,
+            'seed': random.randint(1, 100),
+            'classifier': classifier,
+            'kfold': kfold,
+            'drawcm': False
+        }
         if(classifier == 'mlp'):
-            classifier = {
-                'nhid': 0,
-                'optim': 'rmsprop',
-                'batch_size': 128,
-                'tenacity': 3,
-                'epoch_size': 5
-            }
-            config = {
-                'nclasses': nclasses,
-                'seed': random.randint(1, 100),
-                'usepytorch': True,
-                'classifier': classifier,
-                'nhid': classifier['nhid'],
-                'kfold': kfold,
-                'drawcm': False
-            }
-            clf = InnerKFoldMLPClassifier(X, y, config)
-            dev_accuracy, test_accuracy, test_f1_w, testresults_acc, cm_data = clf.run()
+            clf = InnerKFoldMLPClassifier(X, y, cls_config)
             if(self.drawcm):
                 self.draw_cm(cm_data, dataset, whitening_method, encoder)
         elif(classifier in ['lr', 'rf', 'svm', 'nb']):
-            config = {
-                'nclasses': nclasses,
-                'seed': random.randint(1, 100),
-                'classifier': self.classifier,
-                'kfold': self.kfold,
-                'drawcm': False
-            }
-            clf = InnerKFoldClassifier(X, y, config)
-            dev_accuracy, test_accuracy, test_f1_w, testresults_acc, cm_data = clf.run()
+            clf = InnerKFoldClassifier(X, y, cls_config)
         else:
             raise Exception("unknown classifier")
 
-        return test_accuracy, testresults_acc, test_f1_w
+        dev_accuracy, test_accuracy, test_f1_w, test_rocauc, testresults_acc, cm_data = clf.run()
+
+        return test_accuracy, testresults_acc, test_f1_w, test_rocauc
 
     def draw_cm(self, cm_data, dataset, whitening_method, encoder):
         cm = confusion_matrix(cm_data['y_test'], cm_data['y_pred'], labels=np.unique(cm_data['y_test']))
@@ -124,21 +112,46 @@ class WhiteningEvaluation:
         plt.rcParams.update({'font.size': 30})
         disp.plot(ax=ax, cmap='Blues', colorbar=False, values_format='d')
         path = f'{self.RESULTS_PATH}/{dataset}_eval/cm/{encoder}-{whitening_method}-cm.pdf'
-        print('svaing cm plot',path)
+        logger.info('svaing cm plot in ',path)
         fig.savefig(path, format='pdf')
 
     def load_data(self, dataset_name, encoder_name):
-        path = f'{self.EMBEDDINGS_PATH}{dataset_name}/{encoder_name}_{dataset_name}'
-        if (dataset_name in emb_util.splitted_datasets):
+        path = f'{self.EMBEDDINGS_PATH}/{dataset_name}/{encoder_name}_{dataset_name}'
+        if(dataset_name == 'mrpc'):
+            base_path = f'{self.EMBEDDINGS_PATH}/{dataset_name}/{encoder_name}_{dataset_name}1'
+            data_train_1 = pd.read_csv(base_path+'_train_embeddings.csv' ,sep='\t')
+            data_test_1 = pd.read_csv(base_path+'_test_embeddings.csv' ,sep='\t')
+            data1 = pd.concat([data_train_1, data_test_1], axis=0)
+
+            base_path = f'{self.EMBEDDINGS_PATH}{dataset_name}/{encoder_name}_{dataset_name}2'
+            data_train_2 = pd.read_csv(base_path+'_train_embeddings.csv' ,sep='\t')
+            data_test_2 = pd.read_csv(base_path+'_test_embeddings.csv' ,sep='\t')
+            data2 = pd.concat([data_train_2, data_test_2], axis=0)
+
+            labels_train = pd.read_csv('./data/tcls_datasets/mrpcs_train.csv' ,sep='\t')
+            labels_test = pd.read_csv('./data/tcls_datasets/mrpcs_test.csv' ,sep='\t')
+            y = pd.concat([labels_train, labels_test], axis=0)
+            y = np.array(y).squeeze()
+
+            X1 = np.array(data1.iloc[:, 1:])
+            X2 = np.array(data2.iloc[:, 1:])
+            X = np.c_[np.abs(X1 - X2), X1 * X2]
+            X = pd.DataFrame(X)
+            y = pd.DataFrame(y)
+            y = y.rename(columns={0: 'label'})
+            X.insert(0, 'label', y['label'])
+            X.insert(0, 'text', 'text')
+            data = X
+        elif(dataset_name in emb_util.splitted_datasets):
             data_train = pd.read_csv(path+'_train_embeddings.csv' ,sep='\t')
             data_test = pd.read_csv(path+'_test_embeddings.csv' ,sep='\t')
             data = pd.concat([data_train, data_test], axis=0)
-        elif(dataset_name in emb_util.unsplitted_datasets and dataset_name=='bbbp'):
+        elif(dataset_name in emb_util.bio_datasets):
             data = pd.read_csv('https://jlu.myweb.cs.uwindsor.ca/embeddings/MolNet/bbbp/llama2-7B_bbbp_embeddings.csv', index_col='Unnamed: 0')
         elif(dataset_name in emb_util.unsplitted_datasets):
             data = pd.read_csv(path+'_embeddings.csv', sep='\t')
         else:
-            raise Exception("Could'nt find embeddings file")
+            raise Exception(f"Could'nt find embeddings file in {path}")
 
         data = emb_util.check_and_reorder_dataframe(data)
         # get labels only

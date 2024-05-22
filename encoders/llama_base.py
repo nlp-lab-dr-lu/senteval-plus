@@ -1,15 +1,11 @@
-import logging
-import json
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
-
-from data import *
-import emb_util
-
-import tensorflow as tf
 import torch
-from transformers import LlamaTokenizer, LlamaForCausalLM, LlamaConfig
+from transformers import LlamaTokenizer, LlamaForCausalLM, LlamaConfig, AutoTokenizer
+from data import get_dataset
+import emb_util
+from emb_util import logger, save_embeddings
 # from accelerate import infer_auto_device_map
 
 class Llama_Embeddings:
@@ -21,13 +17,12 @@ class Llama_Embeddings:
         self.pooling = pooling
         self.strategy = strategy
 
-        logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
-
-        logging.info('loading model and tokenizer')
+        logger.info('loading model and tokenizer')
         self.model_name = model_name
         models_path = {
             "llama-7B": "./llama_converted/7B",
             "llama2-7B": "./llama2_converted/7B",
+            "llama3-8B": "./llama3_converted",
         }
         PATH_TO_CONVERTED_WEIGHTS = models_path[model_name]
 
@@ -46,32 +41,26 @@ class Llama_Embeddings:
             self.model = LlamaForCausalLM.from_pretrained(
                 PATH_TO_CONVERTED_WEIGHTS,
                 device_map=device,
-                output_hidden_states=True
+                # output_hidden_states=True
             )
-
-        self.tokenizer = LlamaTokenizer.from_pretrained(PATH_TO_CONVERTED_WEIGHTS)
-
-        # unknow tokens. we want this to be different from the eos token
+        # self.tokenizer = AutoTokenizer.from_pretrained("ibm/MoLFormer-XL-both-10pct", trust_remote_code=True)
+        self.tokenizer = AutoTokenizer.from_pretrained(PATH_TO_CONVERTED_WEIGHTS)
         self.tokenizer.pad_token_id = (0)
         self.tokenizer.padding_side = "left"
         self.datasets = datasets
 
         for dataset in self.datasets:
+            logger.info(f'encoding {dataset} dataset with {self.model_name} model')
             self.dataset_name = dataset
-            dataset = get_dataset(dataset) # small data: dataset = get_small_dataset("mr", 10)
+            dataset = get_dataset(dataset) 
             self.train_data, self.test_data = dataset["train"], dataset["test"]
-       
-            print('>>>>>>>>', self.model_name, self.dataset_name, self.strategy, self.pooling, '<<<<<<<<')
-            if(self.dataset_name in emb_util.unsplitted_datasets or self.dataset_name in emb_util.similarity_datasets):
-                embeddings = self.get_embeddings(self.train_data, self.dataset_name, True)
-            elif(self.dataset_name in emb_util.splitted_datasets):
+            if(self.dataset_name in emb_util.splitted_datasets or self.dataset_name in emb_util.bio_datasets):
                 train_embeddings = self.get_embeddings(self.train_data, self.dataset_name+'_train', True)
                 test_embeddings = self.get_embeddings(self.test_data, self.dataset_name+'_test', True)
             else:
-                raise Exception("unknown dataset")
-        
+                embeddings = self.get_embeddings(self.train_data, self.dataset_name, True)
+
     def get_embeddings(self, dataset, split, save):
-        logging.info('encoding data and generating embeddings for test/train')
         '''
             dataset: a hugging face dataset object
             split: the split name string to save embeddings in a path
@@ -79,9 +68,8 @@ class Llama_Embeddings:
         '''
 
         embeddings = []
-        for i, data_row in enumerate(tqdm(dataset)):
-            data_row['text'] = '' if data_row['text'] == None else data_row['text']
-            
+        for i, data_row in tqdm(dataset.iterrows()):
+            data_row['text'] = ' ' if data_row['text'] == None else data_row['text']
             tokens = self.tokenizer(
                 data_row['text'],
                 padding=True,
@@ -91,8 +79,9 @@ class Llama_Embeddings:
                 return_attention_mask = True
             )
             with torch.no_grad():
-                output = self.model(**tokens, return_dict=True)
+                output = self.model(**tokens, return_dict=True, output_hidden_states=True)
                 hidden_states = output.hidden_states
+
                 if self.strategy == 'layer' and isinstance(self.pooling, int):
                     embedding = (hidden_states[self.pooling]).mean(dim=1)
                 elif self.strategy == 'range' and isinstance(self.pooling, int):
@@ -105,13 +94,11 @@ class Llama_Embeddings:
 
             embeddings.append(embedding[0])
 
-
         if (save):
-            logging.info('saving data embeddings')
-            emb_util.save_embeddings(embeddings, dataset, self.model_name, self.dataset_name, split)
+            save_embeddings(embeddings, dataset, self.model_name, self.dataset_name, split)
 
-            # embeddings = np.array(embeddings)
-            # embeddings = pd.concat([pd.DataFrame(dataset), pd.DataFrame(embeddings)], axis=1)
+            embeddings = np.array(embeddings)
+            embeddings = pd.concat([pd.DataFrame(dataset), pd.DataFrame(embeddings)], axis=1)
 
             # print(embeddings)
             # path = f'embeddings/{self.dataset_name}'
