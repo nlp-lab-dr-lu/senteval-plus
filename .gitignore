@@ -6,8 +6,3 @@ env/
 65B_converted/
 offload/
 
-data/
-
-*.bin
-*.csv
-
