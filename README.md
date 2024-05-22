@@ -7,7 +7,7 @@ First clone the project:
 ```bash
 git clone https://github.com/nlp-lab-dr-lu/senteval-plus.git
 ```
-Then create a virtual environment to install dependencies and activate it:
+Next, create a virtual environment to install dependencies and activate it:
 ```bash
 cd senteval-plus
 virtualenv env
@@ -19,16 +19,15 @@ pip install -r requirements.txt
 ```
 
 <h2>Where To Start</h2>
-<p>You can download the embeddings of x,y,z,... datasets from this table. If you need to add new dataset to evaluate:
+<p>You can use this repository to both generate and evaluate embeddings with different settings.
   <ol>
-    <li> Want to start from scratch? steps to <a href='#eg'>generate embeddings</a> using our code </li>
-    <li> Already have the embeddings of your dataset? start <a href='#ee'>evaluation</a> </li>
-    <li> Already evaluated? <a href='#p'>plot</a> your results using colab </li>
+    <li> <a href='#eg'>Generate Embeddings</a> </li>
+    <li> <a href='#ee'>Evaluation</a> </li>
   </ol>
 </p>
 
 <h2 id='eg'>Embedding Generation</h2>
-<p>The entry point to generate embeddings is main.py file. A loop over encoders and datasets will embeddings in this file. You can chose between our provided data in data folder or add any dataset you want to evaluate. Make sure to follow our datasets format for next steps.</p>
+<p>The entry point to generate embeddings is main.py file. A loop over encoders and datasets will generate embeddings in this file. You can chose between our provided data in data folder or add any dataset you want to evaluate. Make sure to follow our datasets format for next steps.</p>
 
 <p>To generate embeddings you want for your data, open main.py and fill the two lists:</p> <br>
   
@@ -36,12 +35,95 @@ pip install -r requirements.txt
 datasets = ["mr", "cr", "subj", "mpqa", ... ] 
 models = ["simcse", "bert", "all-mpnet-base-v2", "text-embedding-3-small", "llama-7B", ... ]
 ``` 
-<p>By default, we support Bert-base-uncased, SimCSE, SBert(all-mpnet-base-v2), ChatGPT(text-embedding-3-small), AnglE-Bert, AnglE-LLaMA and LLaMA(2) as models and STS, MR, CR, SUBJ, TREC, MPQA, MRPC as datasets to generate embeddings. You can easily add your embeddings to our pipeline by creating a file in encoder directory and follow our encoder template. Then you need to import your encoder in maon.py and add it to the loop</p>
-<p> You need to store your embeddings in a directory named as `embeddings` in the root directory of the project.</p>
-<!-- will add a bash file to automatically download embeddings from dr lu's website later -->
-<h2 id='ee'>Evaluate Embeddings</h2>
-Once you have the embeddings you can evaluate them using our evaluate code. We support two tasks: 1) Classification 2) Semantic Similarity
-To evaluate the embeddings with classification task you need to add your dataset and encoder names in eval_cls.py file. This file automatically evaluate your embeddings and create a json file of the results of the 5-fold classification with an MLP in results folder. You can also create confusion matrix by changing the draw_cm value to True in the code.
+<p>By default, we support Bert-base-uncased, SimCSE, SBert(all-mpnet-base-v2), ChatGPT(text-embedding-3-small), AnglE-Bert, AnglE-LLaMA and LLaMA(2) as models and STS, MR, CR, SUBJ, TREC, MPQA, MRPC, and SSTF as datasets to generate embeddings. You can easily add your embeddings to our pipeline by creating a file in encoder directory and follow our encoder template to implement generate embedding code. Then you need to import your encoder in main.py and add it to the loop</p>
 
-<h2 id='p'>Plotting</h2>
-To plot your results and compare them with each other you can use plots.ipynb notebook. You just need to add your data and encoder to the list of each plot and then generate the plots.
+<p> You need to store your embeddings in a directory named `embeddings` in the root directory of the project. Take a look at two sample embeddings for MR and STS-B dataset in this direcotry to understand the structure of `embeddings` directory.</p>
+
+<h2 id='ee'>Evaluate Embeddings</h2>
+Once you have the embeddings you can evaluate them using our evaluate code. We support three tasks:
+<ol>
+  <li> <a href='#cls'>Classification</a> </li>
+  <li> <a href='#sts'>Semantic Similarity</a> </li>
+  <li> <a href='#clu'>Clustering</a> </li>
+</ol> 
+
+<h3 id='cls'>Classification</h3>
+<p>To evaluate the embeddings with classification task you need to add your dataset and encoder names in a config dictionary and create the loop for evaluation. Note that you can modify both number of folds and classifier in this configuration. Your classifier options are Multi-Layer Perceptron (mlp), Random Forest (rf), and SVM (svm). However, to utilize GPU to speed up evaluation process you need to use `mlp` classifier. A sample configuration dictionary could be as follow:</p>
+
+```python
+encoders = ["bert", ...]
+datasets = ["mr", ...]
+
+EMBEDDINGS_PATH = 'embeddings/' # where you stored the embeddings
+RESULTS_PATH = 'results/' # where you want to save the results of evaluation
+config = {
+    'EMBEDDINGS_PATH': EMBEDDINGS_PATH,
+    'RESULTS_PATH': RESULTS_PATH,
+    'classifier': 'mlp',
+    'kfold': 5,
+    'encoders': encoders,
+    'datasets': datasets
+}
+```
+<p>Then you can run the loop using our `Evaluation()` class:</p>
+
+```python
+from eval.eval_cls import Evaluation
+
+eval = Evaluation(config)
+eval.run()
+```
+
+<h3 id='sts'>Semantic Similarity</h3>
+<p>Similar to classification task you need to set a config dictionary and run evaluation. </p>
+
+```python
+encoders = ["bert", ...]
+datasets = ["stsb", ...]
+
+EMBEDDINGS_PATH = 'embeddings/' # where you stored the embeddings
+RESULTS_PATH = 'results/' # where you want to save the results of evaluation
+config = {
+    'EMBEDDINGS_PATH': EMBEDDINGS_PATH,
+    'RESULTS_PATH': RESULTS_PATH,
+    'encoders': encoders,
+    'datasets': datasets
+}
+```
+<p>Then you can run the loop using our `Evaluation()` class:</p>
+
+```python
+from eval.eval_sts import Evaluation
+
+eval = Evaluation(config)
+eval.run()
+```
+
+<h3 id='clu'>Clustering</h3>
+<p>Our final evaluation task is clustering. You can run clustering using a similar confi structure to other tasks.</p>
+
+```python
+encoders = ["bert", ...]
+datasets = ["mr", ...]
+
+EMBEDDINGS_PATH = 'embeddings/' # where you stored the embeddings
+SCORES_PATH = 'results/' # where you want to save the results of evaluation
+config = {
+    'EMBEDDINGS_PATH': EMBEDDINGS_PATH,
+    'SCORES_PATH': RESULTS_PATH,
+    'encoders': encoders,
+    'datasets': datasets
+}
+```
+<p>Then you can run the evaluation using our `ClusteringEvaluation()` class. Our clustering evaluation automatically, runs all whitening transformation on the embeddings as well.</p>
+
+```python
+from eval.clustering import ClusteringEvaluation
+config = {
+    'EMBEDDINGS_PATH': EMBEDDINGS_PATH,
+    'RESULTS_PATH': RESULTS_PATH,
+    'datasets': datasets,
+}
+eval = ClusteringEvaluation(config)
+eval.run()
+```
