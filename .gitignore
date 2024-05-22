@@ -1,4 +1,3 @@
-results/
 env/
 
 7B_converted/
@@ -8,7 +7,6 @@ env/
 offload/
 
 data/
-finetuned_bert/
 
 *.bin
 *.csv
