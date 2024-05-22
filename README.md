@@ -119,11 +119,7 @@ config = {
 
 ```python
 from eval.clustering import ClusteringEvaluation
-config = {
-    'EMBEDDINGS_PATH': EMBEDDINGS_PATH,
-    'RESULTS_PATH': RESULTS_PATH,
-    'datasets': datasets,
-}
+
 eval = ClusteringEvaluation(config)
 eval.run()
 ```
